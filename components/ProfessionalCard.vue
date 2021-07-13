@@ -20,7 +20,14 @@
         :to="{ name: 'ProfessionalProfile' }"
         class="text-decoration-none"
       > -->
-      <v-btn outlined rounded>PROFILE</v-btn>
+      <v-btn outlined rounded>
+        <nuxt-link
+          :to="{ path: `/professionals/${professional.id}` }"
+          style="text-decoration: none; color: inherit"
+          >PROFILE
+          </nuxt-link
+        >
+      </v-btn>
       <!-- </router-link> -->
     </v-card-actions>
   </v-card>
