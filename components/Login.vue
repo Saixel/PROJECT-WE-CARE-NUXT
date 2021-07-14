@@ -3,9 +3,9 @@
     <v-card width="500px">
       <v-card-title>Login</v-card-title>
       <v-card-text>
-        <v-text-field v-model="email" type="text" label="Email"></v-text-field>
+        <v-text-field v-model="login.email" type="text" label="Email"></v-text-field>
         <v-text-field
-          v-model="password"
+          v-model="login.password"
           type="password"
           label="Passowrd"
         ></v-text-field>
@@ -14,7 +14,7 @@
       <v-divider></v-divider>
 
       <v-card-actions>
-        <v-btn color="success" @click="login">Login</v-btn>
+        <v-btn color="success" @click="userLogin">Login</v-btn>
       </v-card-actions>
     </v-card>
   </v-container>
@@ -23,12 +23,30 @@
 <script>
 // import authService from "@/services/authService.js";
 export default {
-  data: () => ({
-    email: "",
-    password: "",
-    snackbar: false,
-    snackText: "HOLAAAAA",
-  }),
+  data() {
+    return {
+      login: {
+        email: '',
+        password: '',
+      }
+    }
+  },
+  // data: () => ({
+  //   email: "",
+  //   password: "",
+  // }),
+
+  methods: {
+    async userLogin() {
+      try {
+        await this.$auth.loginWith('local', {data: this.login })
+      } catch (err) {
+        // eslint-disable-next-line no-console
+        console.log(err)
+      }
+    }
+  }
+
   // methods: {
   //   login() {
   //     authService

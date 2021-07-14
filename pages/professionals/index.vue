@@ -19,6 +19,7 @@
 
 <script>
 export default {
+  middleware: ['auth', 'role'],
   async asyncData({ $axios }) {
     const professionals = await $axios.$get('/users/professionals')
     return {

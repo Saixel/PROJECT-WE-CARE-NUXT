@@ -1,9 +1,11 @@
 <template>
   <v-app>
     <v-app-bar id="header" color="primary lighten-1" dark app>
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
 
-      <v-toolbar-title>WE CARE</v-toolbar-title>
+      <nuxt-link :to="{ path: '/' }">
+        <v-toolbar-title>WE CARE</v-toolbar-title>
+      </nuxt-link>
 
       <v-btn
         v-for="(link,idx) in linksHeader"
@@ -22,20 +24,21 @@
         <nuxt-link :to="{ path: '/login' }">LOGIN</nuxt-link>
       </v-btn>
 
-      <!-- <v-btn color="white" text rounded class="my-2">
-        <nuxt-link :to="{ path: '/' }">LOGOUT</nuxt-link>
-      </v-btn> -->
-
-      <v-btn color="white" text rounded class="my-2">
-        <nuxt-link :to="{ path: '/login' }">REGISTER</nuxt-link>
+      <v-btn color="white" text rounded class="my-2" @click="logout">
+        LOGOUT
+        <!-- <nuxt-link :to="{ path: '/' }">LOGOUT</nuxt-link> -->
       </v-btn>
+
+      <!-- <v-btn color="white" text rounded class="my-2">
+        <nuxt-link :to="{ path: '/login' }">REGISTER</nuxt-link>
+      </v-btn> -->
 
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
 
       <v-menu left bottom>
-        <template v-slot:activator="{ on, attrs }">
+        <template #activator="{ on, attrs }">
           <v-btn icon v-bind="attrs" v-on="on">
             <v-icon>mdi-dots-vertical</v-icon>
           </v-btn>
@@ -96,6 +99,11 @@ export default {
     ],
     linksFooter: ['home', 'about us', 'team', 'services', 'contact Us'],
   }),
+  methods: {
+    async logout() {
+      await this.$auth.logout()
+    }
+  }
 }
 </script>
 
