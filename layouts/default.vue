@@ -18,8 +18,16 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
+      <v-btn color="white" text rounded class="my-2">
+        <nuxt-link :to="{ path: '/login' }">LOGIN</nuxt-link>
+      </v-btn>
+
+      <!-- <v-btn color="white" text rounded class="my-2">
+        <nuxt-link :to="{ path: '/' }">LOGOUT</nuxt-link>
+      </v-btn> -->
+
+      <v-btn color="white" text rounded class="my-2">
+        <nuxt-link :to="{ path: '/login' }">REGISTER</nuxt-link>
       </v-btn>
 
       <v-btn icon>
