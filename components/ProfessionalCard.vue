@@ -25,8 +25,7 @@
           :to="{ path: `/professionals/${professional.id}` }"
           style="text-decoration: none; color: inherit"
           >PROFILE
-          </nuxt-link
-        >
+        </nuxt-link>
       </v-btn>
       <!-- </router-link> -->
     </v-card-actions>
