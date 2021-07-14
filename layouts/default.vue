@@ -6,7 +6,7 @@
       <v-toolbar-title>WE CARE</v-toolbar-title>
 
       <v-btn
-        v-for="(link,idx) in linksHeader"
+        v-for="(link, idx) in linksHeader"
         :key="idx"
         color="white"
         text
@@ -18,13 +18,17 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
+
 
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
+      <nuxt-link :to="{ path: '/profile' }">
+        <v-avatar>
+          <img src="/alexprofile1.jpg" alt="alexis" />
+        </v-avatar>
+      </nuxt-link>
+
 
       <v-menu left bottom>
         <template v-slot:activator="{ on, attrs }">
@@ -48,7 +52,7 @@
     <v-footer color="primary lighten-1" padless>
       <v-row justify="center" no-gutters>
         <v-btn
-          v-for="(link,idx) in linksFooter"
+          v-for="(link, idx) in linksFooter"
           :key="idx"
           color="white"
           text
