@@ -27,13 +27,12 @@
     <v-card-actions>
       <v-btn text color="blue darken-1" @click="reveal = true"> ver más </v-btn>
       <v-spacer></v-spacer>
-      <v-btn text color="blue darken-4"
-        ><nuxt-link
+      <v-btn text color="blue darken-4">
+        <nuxt-link
           :to="{ path: `/contents/${content.id}` }"
           style="text-decoration: none; color: inherit"
-          >Ir a la ficha</nuxt-link
-        ></v-btn
-      >
+          >Ir a la ficha</nuxt-link>
+      </v-btn>
     </v-card-actions>
 
     <v-expand-transition>
