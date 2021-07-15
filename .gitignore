@@ -89,5 +89,5 @@ sw.*
 # Vim swap files
 *.swp
 
-# Others
+# Others files
 package-lock.json
