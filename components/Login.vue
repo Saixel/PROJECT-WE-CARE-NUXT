@@ -39,10 +39,11 @@ export default {
   methods: {
     async userLogin() {
       try {
-        await this.$auth.loginWith('local', {data: this.login })
+        const response = await this.$auth.loginWith('local', {data: this.login })
+        console.log(response)
       } catch (err) {
         // eslint-disable-next-line no-console
-        console.log(err)
+        // this.$router.push('/')
       }
     }
   }
