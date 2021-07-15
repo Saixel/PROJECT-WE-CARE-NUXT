@@ -1,8 +1,8 @@
 <template>
   <v-container v-if="content" class="mx-0" fluid>
     <v-row class="d-flex justify-center">
-      <v-col xs="12" sm="6">
-        <v-card height="420">
+      <v-col xs="12" sm="9">
+        <v-card class="overflow-y-auto" height="420">
           <v-card-title style="background: #f0f8ff"
             ><strong>{{ content.title }}</strong></v-card-title
           >
@@ -19,10 +19,11 @@
         </v-card>
       </v-col>
 
-      <v-col xs="12" sm="4" md="3" lg="2">
+      <v-col xs="12" sm="9" lg="3">
         <!-- <v-sheet rounded="lg" min-height="268"> -->
+
         <v-card height="420">
-          <v-img height="280" src="/alexprofile1.jpg"></v-img>
+          <v-img class="cursor" height="280" src="/alexprofile1.jpg"></v-img>
           <v-card-title>{{ content.author.name }}</v-card-title>
           <v-card-text>
             <v-row align="center" class="mx-0">
@@ -34,20 +35,21 @@
                 readonly
                 size="14"
               ></v-rating>
-
-              <div class="grey--text ms-4">4.5 (413)</div>
+              <div>
+                <h3>sdfuhasiudh</h3>
+              </div>
+              <div class="grey--text ms-4">
+               <h4>4.5 (413)</h4>
+              </div>
             </v-row>
 
-            <!-- <div class="my-4 text-subtitle-1">$ • Italian, Cafe</div> -->
 
-            <!-- <div class="mt-4">
-              {{ content.author.description }}
-            </div> -->
+
           </v-card-text>
           <v-divider class="mx-4"></v-divider>
           <v-container>
             <v-row>
-              <v-col class="d-flex justify-space-between">
+              <v-col class="d-flex justify-space-around">
                 <!-- class="ma-2 mt-n6" color="warning" dark -->
                 <h2>
                   <v-chip color="green lighten-3">
@@ -65,8 +67,8 @@
 
     <!-- NO TOCAR SALVO QUE SEAS ALEXIS :) -->
 
-    <!-- <v-row class="d-flex justify-center">
-      <v-col cols="8">
+    <v-row class="d-flex justify-center">
+      <v-col cols="12">
         <v-sheet>
           <v-expansion-panels>
             <v-expansion-panel
@@ -111,14 +113,14 @@
           </v-expansion-panels>
         </v-sheet>
       </v-col>
-    </v-row> -->
+    </v-row>
   </v-container>
 </template>
 
 <script>
 export default {
-  async asyncData({$axios, params}) {
-    return {content: await $axios.$get(`/content/${params.id}`)};
+  async asyncData({ $axios, params }) {
+    return { content: await $axios.$get(`/content/${params.id}`) }
   },
 }
 </script>
