@@ -13,7 +13,8 @@
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint:style": "stylelint \"**/*.{vue,css}\" --ignore-path .gitignore",
     "prepare": "husky install",
-    "lint": "npm run lint:js && npm run lint:style"
+    "lint": "npm run lint:js && npm run lint:style",
+    "heroku-postbuild": "npm run build"
   },
   "lint-staged": {
     "*.{js,vue}": "eslint",
