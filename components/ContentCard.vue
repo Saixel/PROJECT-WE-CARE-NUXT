@@ -6,8 +6,9 @@
     style="background: #f0f8ff"
   >
     <v-card-title
-      >{{ content.title }} <v-spacer></v-spacer>
+      ><span style="text-overflow: 'ellipsis'; width: 70%; overflow:hidden; height: 1.2em">{{ content.title }}</span> <v-spacer></v-spacer>
       <!-- color="green lighten-3" -->
+      
       <v-chip v-bind:color="content.price == 'free' ? 'green' : '#1E90FF'">{{
         content.price.toUpperCase()
       }}</v-chip></v-card-title
