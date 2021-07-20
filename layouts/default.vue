@@ -37,7 +37,7 @@
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
-      <nuxt-link :to="{ path: '/profile' }">
+      <nuxt-link :to="{ path: '/profiles' }">
         <v-avatar>
           <img src="/alexprofile1.jpg" alt="alexis" />
         </v-avatar>
