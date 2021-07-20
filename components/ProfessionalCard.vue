@@ -22,7 +22,7 @@
       > -->
       <v-btn outlined rounded>
         <nuxt-link
-          :to="{ path: `/professionals/${professional.id}` }"
+          :to="{ path: `/professionals/${professional._id}` }"
           style="text-decoration: none; color: inherit"
           >PROFILE
         </nuxt-link>

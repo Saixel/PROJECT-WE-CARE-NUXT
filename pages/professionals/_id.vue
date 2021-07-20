@@ -13,16 +13,18 @@
           </div>
           <div style="text-align: center">
             <h1>{{ professional.name }}</h1>
-            <h4 v-if="collective">
-              Especializado en:
-              <v-chip v-for="(collective, i) in collective" :key="i">{{collective}}</v-chip>
-            </h4>            
             <h4 class="grey--text">{{ professional.description }}</h4>
+            <div v-if="collective">
+              <span>Especializado/a en:</span>
+              <div :class="$vuetify.breakpoint.mobile ? '' : 'scroller'" style="overflow: auto; white-space: nowrap">
+                <v-chip v-for="(collective, i) in collectives" :key="i" class="me-2 mb-1">{{collective}}</v-chip>
+              </div>
+            </div>
           </div>
           <hr class="my-10" />
           <h3>About me</h3>
           <br />
-          <div :style="`height: 10vh; overflow: ${expand ? scroll : hidden}`">
+          <div :style="`height: ${expand ? 'auto' : '10vh'}; overflow: hidden; text-overflow: 'ellipsis'`">
             <span>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -40,7 +42,7 @@
               officia deserunt mollit anim id est laborum
             </span>
           </div>
-          <span class="text-decoration-underline" @click="expand = !expand">Show more...</span>
+          <span class="text-decoration-underline grey--text text--darken-1" @click="expand = !expand" style="cursor: pointer">Show {{expand ? 'less' : 'more'}}...</span>
         </v-sheet>
       </v-col>
 
@@ -95,11 +97,32 @@ export default {
       contents: await $axios.$get('/content'),
     }
   },
+  data() {
+    return {
+      expand: false,
+      collectives: ['LOOK WHO', 'WE GOT HERE', 'IF IT', 'ISN\'T MR', 'COLLECTIVES', 'HIMSELF!','WHAT BRINGS','SUCH A','HANDSOME FELLA','AS YOURSELF', 'TO THIS TOWN']
+    }
+  }
 }
 </script>
 
-<style scoped>
-v-btn {
-  margin: 5px;
-}
-</style>
+  <style scoped>
+  v-btn {
+    margin: 5px;
+  }
+  .scroller::-webkit-scrollbar-track {
+    background-color: lightgray;
+    border-radius: 20px;
+  }
+  .scroller::-webkit-scrollbar-thumb {
+    background: #b3b3b3;
+    border-radius: 20px;
+  }
+  .scroller::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  .scroller::-webkit-scrollbar-thumb:hover {
+    background: #808080;
+  }
+  </style>
