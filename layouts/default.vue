@@ -21,7 +21,7 @@
       <v-spacer></v-spacer>
 
       <v-btn color="white" text rounded class="my-2">
-        <nuxt-link :to="{ path: '/login' }">LOGIN</nuxt-link>
+        <nuxt-link :to="{ path: '/login02' }">LOGIN</nuxt-link>
       </v-btn>
 
       <v-btn color="white" text rounded class="my-2" @click="logout">

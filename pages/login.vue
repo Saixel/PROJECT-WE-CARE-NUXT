@@ -20,14 +20,14 @@
 <script>
 export default {
   data: () => ({}),
-  // methods: {
-  //   logout() {
-  //     localStorage.removeItem("token");
-  //     localStorage.removeItem("email");
-  //     localStorage.removeItem("role");
-  //     this.$router.push("/");
-  //   },
-  // },
+  methods: {
+    logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("email");
+      localStorage.removeItem("role");
+      this.$router.push("/");
+    },
+  },
 };
 </script>
 
