@@ -2,7 +2,7 @@
   <v-container v-if="content" class="mx-0" fluid>
     <v-row class="d-flex justify-center">
       <v-col xs="12" sm="9">
-        <v-card class="overflow-y-auto" height="420">
+        <v-card class="overflow-y-auto" height="460">
           <v-card-title style="background: #f0f8ff"
             ><strong>{{ content.title }}</strong></v-card-title
           >
@@ -20,10 +20,8 @@
       </v-col>
 
       <v-col xs="12" sm="9" lg="3">
-
-        <v-card height="420">
+        <v-card height="460">
           <v-img class="cursor" height="280" src="/alexprofile1.jpg"></v-img>
-          <v-card-title>{{ content.author.name }}</v-card-title>
           <v-card-text>
             <v-row align="center" class="mx-0">
               <v-rating
@@ -34,23 +32,28 @@
                 readonly
                 size="14"
               ></v-rating>
-              <div>
-                <h3>sdfuhasiudh</h3>
-              </div>
+
               <div class="grey--text ms-4">
-               <h4>4.5 (413)</h4>
+                <h4>4.5 (413)</h4>
               </div>
             </v-row>
-
-
-
           </v-card-text>
+          <v-card-title class="mt-n6">{{ content.author.name }}</v-card-title>
+          <v-card-text class="mt-n4">
+            <h4 class="text-decoration-underline">
+              <strong>Este curso incluye:</strong>
+            </h4>
+            <ul>
+              <li>9 Ejercicios</li>
+            </ul>
+          </v-card-text>
+
           <v-divider class="mx-4"></v-divider>
           <v-container>
             <v-row>
               <v-col class="d-flex justify-space-around">
                 <h2>
-                  <v-chip color="green lighten-3">
+                  <v-chip color="#eee">
                     {{ content.price.toUpperCase() }}
                   </v-chip>
                 </h2>
@@ -119,3 +122,8 @@ export default {
   },
 }
 </script>
+<style >
+.v-chip {
+  pointer-events: none !important;
+}
+</style>
