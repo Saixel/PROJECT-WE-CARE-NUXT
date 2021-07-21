@@ -6,9 +6,18 @@
     style="background: #f0f8ff"
   >
     <v-card-title
-      ><span style="text-overflow: 'ellipsis'; width: 70%; overflow:hidden; height: 1.2em">{{ content.title }}</span> <v-spacer></v-spacer>
+      ><span
+        style="
+          text-overflow: 'ellipsis';
+          width: 70%;
+          overflow: hidden;
+          height: 1.2em;
+        "
+        >{{ content.title }}</span
+      >
+      <v-spacer></v-spacer>
       <!-- color="green lighten-3" -->
-      
+
       <v-chip v-bind:color="content.price == 'free' ? 'green' : '#1E90FF'">{{
         content.price.toUpperCase()
       }}</v-chip></v-card-title
@@ -30,9 +39,10 @@
       <v-spacer></v-spacer>
       <v-btn text color="blue darken-4">
         <nuxt-link
-          :to="{ path: `/contents/${content.id}` }"
+          :to="{ path: `/contents/${content._id}` }"
           style="text-decoration: none; color: inherit"
-          >Ir a la ficha</nuxt-link>
+          >Ir a la ficha</nuxt-link
+        >
       </v-btn>
     </v-card-actions>
 

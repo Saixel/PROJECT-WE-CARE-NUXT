@@ -7,7 +7,7 @@
             <v-avatar size="150">
               <img
                 src="/alexprofile1.jpg"
-                :alt="`Foto de ${professional.name}`"              
+                :alt="`Foto de ${professional.name}`"
               >
             </v-avatar>
           </div>

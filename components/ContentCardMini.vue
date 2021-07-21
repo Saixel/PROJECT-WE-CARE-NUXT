@@ -7,7 +7,7 @@
     style="background: #f0f8ff"
   >
     <nuxt-link
-      :to="{ path: `/profiles/${content.id}` }"
+      :to="{ path: `/profiles/${content._id}` }"
       style="text-decoration: none; color: inherit"
     >
       <v-card-title style="text-overflow: ellipsis"

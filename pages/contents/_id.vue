@@ -20,7 +20,6 @@
       </v-col>
 
       <v-col xs="12" sm="9" lg="3">
-        <!-- <v-sheet rounded="lg" min-height="268"> -->
 
         <v-card height="420">
           <v-img class="cursor" height="280" src="/alexprofile1.jpg"></v-img>
@@ -50,7 +49,6 @@
           <v-container>
             <v-row>
               <v-col class="d-flex justify-space-around">
-                <!-- class="ma-2 mt-n6" color="warning" dark -->
                 <h2>
                   <v-chip color="green lighten-3">
                     {{ content.price.toUpperCase() }}
@@ -61,11 +59,8 @@
             </v-row>
           </v-container>
         </v-card>
-        <!-- </v-sheet> -->
       </v-col>
     </v-row>
-
-    <!-- NO TOCAR SALVO QUE SEAS ALEXIS :) -->
 
     <v-row class="d-flex justify-center">
       <v-col cols="12">
