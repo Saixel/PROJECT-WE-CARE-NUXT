@@ -1,8 +1,14 @@
 <template>
-  <v-card class="mx-auto rounded-lg" max-width="400" outlined style="background: #f0f8ff">
+  <v-card
+    class="mx-auto rounded-lg elevation-5 card-outter"
+    max-width="400"
+    height="200"
+    outlined
+    style="background: #f0f8ff"
+  >
     <v-list-item three-line>
       <v-list-item-content>
-        <div class="text-overline mb-4">PROFESSIONAL</div>
+        <!-- <div class="text-overline mb-4">PROFESSIONAL</div> -->
         <v-list-item-title class="text-h5 mb-1">
           {{ professional.name }}
         </v-list-item-title>
@@ -12,22 +18,18 @@
       </v-list-item-content>
 
       <v-list-item-avatar tile size="80">
-        <v-img src="profile1.png"></v-img>
+        <v-img src="/profile1.png"></v-img>
       </v-list-item-avatar>
     </v-list-item>
-    <v-card-actions>
-      <!-- <router-link
-        :to="{ name: 'ProfessionalProfile' }"
-        class="text-decoration-none"
-      > -->
-      <v-btn outlined rounded>
+
+    <v-card-actions class="card-actions">
+      <v-btn text color="blue darken-4">
         <nuxt-link
           :to="{ path: `/professionals/${professional._id}` }"
           style="text-decoration: none; color: inherit"
           >PROFILE
         </nuxt-link>
       </v-btn>
-      <!-- </router-link> -->
     </v-card-actions>
   </v-card>
 </template>
@@ -39,3 +41,14 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.card-outter {
+  position: relative;
+  padding-bottom: 50px;
+}
+.card-actions {
+  position: absolute;
+  bottom: 0;
+}
+</style>

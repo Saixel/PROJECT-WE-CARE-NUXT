@@ -1,19 +1,14 @@
 <template>
   <v-app-bar color="primary lighten-1" dark app>
     <img src="/WeCareLogo.png" alt="WeCare" class="mr-4" style="width: 60px" />
+
     <nuxt-link :to="{ path: '/' }">
       <v-toolbar-title>
         <strong>WE CARE</strong>
       </v-toolbar-title>
     </nuxt-link>
 
-    <v-btn
-      v-for="(link, idx) in links"
-      :key="idx"
-      text
-      rounded
-      class="my-2"
-    >
+    <v-btn v-for="(link, idx) in links" :key="idx" text rounded>
       <nuxt-link :to="{ path: link.path }">{{ link.name }}</nuxt-link>
     </v-btn>
 
@@ -27,7 +22,7 @@
       <v-menu open-on-hover offset-y transition="slide-y-transition">
         <template #activator="{ on, attrs }">
           <v-avatar class="mr-10" v-bind="attrs" v-on="on">
-            <img src="/alexprofile1.jpg" alt="alexis" />
+            <img src="/profile1.png" alt="alexis" />
           </v-avatar>
         </template>
 
@@ -48,6 +43,7 @@
           <strong>LOGIN</strong>
         </nuxt-link>
       </v-btn>
+
       <v-btn color="white" text rounded class="my-2">
         <nuxt-link :to="{ path: '/login' }">
           <strong>REGISTER</strong>
