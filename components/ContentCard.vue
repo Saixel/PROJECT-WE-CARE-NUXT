@@ -1,9 +1,10 @@
 <template>
   <v-card
     :loading="loading"
-    class="mx-auto mt-6 rounded-lg"
+    class="mx-auto mt-6 rounded-md"
     max-width="450"
-    style="background: #f0f8ff"
+    style="background: #f0f8ff; border: 1px solid black;"
+
   >
     <v-card-title
       ><span
@@ -18,13 +19,13 @@
       <v-spacer></v-spacer>
       <!-- color="green lighten-3" -->
 
-      <v-chip v-bind:color="content.price == 'free' ? 'green' : '#1E90FF'">{{
+      <v-chip v-bind:color="content.price == 'free' ? '#eee' : '#eee'">{{
         content.price.toUpperCase()
       }}</v-chip></v-card-title
     >
     <v-card-subtitle>{{ content.author.name }}</v-card-subtitle>
     <span class="ms-4" v-for="(colle, i) in content.collective" :key="i">
-      <v-chip color="blue lighten-3">{{ colle.name }}</v-chip>
+      <v-chip color="green lighten-3">{{ colle.name }}</v-chip>
     </span>
     <v-card-subtitle> </v-card-subtitle>
     <v-divider class="mx-4 mt-n4"></v-divider>
@@ -35,9 +36,9 @@
     </v-card-text>
 
     <v-card-actions>
-      <v-btn text color="blue darken-1" @click="reveal = true"> ver más </v-btn>
+      <v-btn text color="primary darken-1" @click="reveal = true"> ver más </v-btn>
       <v-spacer></v-spacer>
-      <v-btn text color="blue darken-4">
+      <v-btn text color="primary darken-4">
         <nuxt-link
           :to="{ path: `/contents/${content._id}` }"
           style="text-decoration: none; color: inherit"
@@ -74,11 +75,11 @@
           <p>{{ content.author.description }}</p>
         </v-card-text>
         <v-card-actions class="pt-0">
-          <v-btn text color="blue darken-1" @click="reveal = false">
+          <v-btn text color="primary darken-1" @click="reveal = false">
             Cerrar
           </v-btn>
           <v-spacer></v-spacer>
-          <v-btn text color="blue darken-4">Ir al profesional</v-btn>
+          <v-btn text color="primary darken-4">Ir al profesional</v-btn>
         </v-card-actions>
       </v-card>
     </v-expand-transition>
@@ -111,5 +112,9 @@ export default {
   opacity: 1 !important;
   position: absolute;
   width: 100%;
+}
+
+.v-chip{
+  pointer-events: none !important;
 }
 </style>
