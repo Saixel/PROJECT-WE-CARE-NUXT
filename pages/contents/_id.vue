@@ -36,6 +36,7 @@
               <div class="grey--text ms-4">
                 <h4>4.5 (413)</h4>
               </div>
+
             </v-row>
           </v-card-text>
           <v-card-title class="mt-n6">{{ content.author.name }}</v-card-title>

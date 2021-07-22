@@ -51,7 +51,7 @@
     <v-expand-transition>
       <v-card
         v-if="reveal"
-        class="transition-fast-in-fast-out v-card--reveal"
+        class="transition-fast-in-fast-out v-card--reveal "
         style="height: 100%"
       >
         <v-list-item class="d-flex">
