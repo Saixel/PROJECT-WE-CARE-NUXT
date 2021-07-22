@@ -37,18 +37,18 @@
       </v-menu>
     </div>
 
-    <div v-else>
-      <v-btn color="white" text rounded class="my-2">
-        <nuxt-link :to="{ path: '/login' }">
+    <div v-else-if="!$auth.loggedIn && $route.name !== 'login'">
+      <nuxt-link :to="{ name: 'login', params: { step: 1 } }">
+        <v-btn color="white" text rounded class="my-2">
           <strong>LOGIN</strong>
-        </nuxt-link>
-      </v-btn>
+        </v-btn>
+      </nuxt-link>
 
-      <v-btn color="white" text rounded class="my-2">
-        <nuxt-link :to="{ path: '/login' }">
+      <nuxt-link :to="{ name: 'login', params: { step: 2 } }">
+        <v-btn color="white" text rounded class="my-2" >
           <strong>REGISTER</strong>
-        </nuxt-link>
-      </v-btn>
+        </v-btn>
+      </nuxt-link>
     </div>
   </v-app-bar>
 </template>
@@ -78,7 +78,7 @@ export default {
   methods: {
     async logout() {
       await this.$auth.logout()
-    },
+    }
   },
 }
 </script>
