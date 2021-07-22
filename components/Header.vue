@@ -8,9 +8,15 @@
       </v-toolbar-title>
     </nuxt-link>
 
-    <v-btn v-for="(link, idx) in links" :key="idx" text rounded>
-      <nuxt-link :to="{ path: link.path }">{{ link.name }}</nuxt-link>
-    </v-btn>
+    <nuxt-link
+      v-for="(link, idx) in links"
+      :key="idx"
+      :to="{ path: link.path }"
+    >
+      <v-btn text rounded>
+        {{ link.name }}
+      </v-btn>
+    </nuxt-link>
 
     <v-spacer />
 
@@ -27,11 +33,12 @@
         </template>
 
         <v-list>
-          <v-list-item text rounded class="my-1">
-            <nuxt-link :to="{ path: '/profiles' }"> PROFILE </nuxt-link>
-          </v-list-item>
+          <nuxt-link :to="{ path: '/profiles' }">
+            <v-list-item text rounded class="my-1"> PROFILE </v-list-item>
+          </nuxt-link>
+          <v-divider />
           <v-list-item text rounded class="my-1" @click="logout">
-            <nuxt-link :to="{ path: '/' }"> LOGOUT </nuxt-link>
+            LOGOUT
           </v-list-item>
         </v-list>
       </v-menu>
@@ -45,7 +52,7 @@
       </nuxt-link>
 
       <nuxt-link :to="{ name: 'login', params: { step: 2 } }">
-        <v-btn color="white" text rounded class="my-2" >
+        <v-btn color="white" text rounded class="my-2">
           <strong>REGISTER</strong>
         </v-btn>
       </nuxt-link>
@@ -78,7 +85,7 @@ export default {
   methods: {
     async logout() {
       await this.$auth.logout()
-    }
+    },
   },
 }
 </script>
