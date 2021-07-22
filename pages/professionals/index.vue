@@ -1,5 +1,6 @@
 <template>
-  <v-container v-if="professionals" class="py-10">
+  <v-container v-if="professionals">
+    <Carousel />
     <v-row>
       <v-col
         v-for="(professional, idx) in professionals"
@@ -7,11 +8,7 @@
         sm="6"
         lg="4"
       >
-      <ProfessionalCard
-          :professional="professional"
-          height="200"
-          class="elevation-5"
-        />
+        <ProfessionalCard :professional="professional" />
       </v-col>
     </v-row>
   </v-container>
@@ -19,7 +16,7 @@
 
 <script>
 export default {
-  middleware: ['auth', 'role'],
+  // middleware: ['auth', 'role'],
   async asyncData({ $axios }) {
     const professionals = await $axios.$get('/users/professionals')
     return {
