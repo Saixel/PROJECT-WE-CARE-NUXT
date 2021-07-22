@@ -1,10 +1,9 @@
 <template>
   <v-card
     :loading="loading"
-    class="mx-auto mt-6 rounded-md"
+    class="mx-auto mt-6 rounded-md card-outter"
     max-width="450"
-    style="background: #f0f8ff; border: 1px solid black;"
-
+    style="background: #f0f8ff; border: 1px solid black"
   >
     <v-card-title
       ><span
@@ -19,13 +18,13 @@
       <v-spacer></v-spacer>
       <!-- color="green lighten-3" -->
 
-      <v-chip v-bind:color="content.price == 'free' ? '#eee' : '#eee'">{{
+      <v-chip v-bind:color="content.price == 'free' ? 'green' : 'blue'">{{
         content.price.toUpperCase()
       }}</v-chip></v-card-title
     >
     <v-card-subtitle>{{ content.author.name }}</v-card-subtitle>
     <span class="ms-4" v-for="(colle, i) in content.collective" :key="i">
-      <v-chip color="green lighten-3">{{ colle.name }}</v-chip>
+      <v-chip color="#eee">{{ colle.name }}</v-chip>
     </span>
     <v-card-subtitle> </v-card-subtitle>
     <v-divider class="mx-4 mt-n4"></v-divider>
@@ -35,8 +34,10 @@
       </div>
     </v-card-text>
 
-    <v-card-actions>
-      <v-btn text color="primary darken-1" @click="reveal = true"> ver más </v-btn>
+    <v-card-actions class="card-actions">
+      <v-btn text color="primary darken-1" @click="reveal = true">
+        ver más
+      </v-btn>
       <v-spacer></v-spacer>
       <v-btn text color="primary darken-4">
         <nuxt-link
@@ -114,7 +115,17 @@ export default {
   width: 100%;
 }
 
-.v-chip{
+.v-chip {
   pointer-events: none !important;
+}
+
+.card-outter {
+  position: relative;
+  padding-bottom: 50px;
+}
+
+.card-actions {
+  position: absolute;
+  bottom: 0;
 }
 </style>

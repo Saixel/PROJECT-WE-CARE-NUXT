@@ -1,17 +1,17 @@
 <template>
   <v-row>
-      <v-col class="mt-6">
+      <v-col>
         <v-sheet class="mx-auto" elevation="8" max-width="1200">
           <v-slide-group
             v-model="model"
-            class="pa-4"
+            class="py-4"
             active-class="success"
             show-arrows
           >
             <v-slide-item v-for="n in 15" :key="n" v-slot="{ active, toggle }">
               <v-card
                 :color="active ? undefined : 'grey lighten-1'"
-                class="ma-4"
+                class="mx-4"
                 height="200"
                 width="250"
                 @click="toggle"

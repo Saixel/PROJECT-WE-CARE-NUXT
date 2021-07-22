@@ -1,10 +1,10 @@
 <template>
   <v-card
-    class="mx-auto rounded-lg elevation-5 card-outter"
-    max-width="400"
+    class="mx-auto rounded-md elevation-5 card-outter"
+    max-width="450"
     height="200"
     outlined
-    style="background: #f0f8ff"
+    style="background: #f0f8ff; border: 1px solid black"
   >
     <v-list-item three-line>
       <v-list-item-content>
@@ -23,7 +23,7 @@
     </v-list-item>
 
     <v-card-actions class="card-actions">
-      <v-btn text color="blue darken-4">
+      <v-btn text color="primary darken-4">
         <nuxt-link
           :to="{ path: `/professionals/${professional._id}` }"
           style="text-decoration: none; color: inherit"

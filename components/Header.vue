@@ -21,7 +21,7 @@
     <div v-if="$auth.loggedIn">
       <v-menu open-on-hover offset-y transition="slide-y-transition">
         <template #activator="{ on, attrs }">
-          <v-avatar class="mr-10" v-bind="attrs" v-on="on">
+          <v-avatar class="mr-5" v-bind="attrs" v-on="on">
             <img src="/profile1.png" alt="alexis" />
           </v-avatar>
         </template>
