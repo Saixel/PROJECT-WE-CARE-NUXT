@@ -1,6 +1,6 @@
 <template>
   <v-container v-if="professionals">
-    <Carousel />
+    <Carousel :items="topProfessionals" />
     <v-row>
       <v-col
         v-for="(professional, idx) in professionals"
@@ -23,5 +23,10 @@ export default {
       professionals,
     }
   },
+  computed: {
+    topProfessionals () {
+      return this.professionals.slice(0, 7)
+    }
+  }
 }
 </script>

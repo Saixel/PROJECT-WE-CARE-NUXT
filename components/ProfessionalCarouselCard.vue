@@ -1,8 +1,8 @@
 <template>
   <v-card
-    class="mx-1 rounded-md elevation-2 card-outter"
-    max-width="355"
-    height="200"
+    class="mx-1 rounded-md elevation-2 "
+    max-width="300"
+    height="150"
     outlined
     style="background: #f0f8ff; border: 1px solid black"
   >
@@ -21,16 +21,14 @@
         <v-img src="/profile1.png"></v-img>
       </v-list-item-avatar>
     </v-list-item>
-
-    <v-card-actions class="card-actions">
-      <v-btn text color="primary darken-4">
-        <nuxt-link
-          :to="{ path: `/professionals/${professional._id}` }"
-          style="text-decoration: none; color: inherit"
-          >PROFILE
-        </nuxt-link>
-      </v-btn>
-    </v-card-actions>
+<v-row>
+  <v-col class="d-flex justify-end mx-4 mt-n3">
+    <span>Count: 5 </span>
+    <v-icon>
+      mdi-heart
+    </v-icon>
+  </v-col>
+</v-row>
   </v-card>
 </template>
 
@@ -41,14 +39,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.card-outter {
-  position: relative;
-  padding-bottom: 50px;
-}
-.card-actions {
-  position: absolute;
-  bottom: 0;
-}
-</style>

@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col sm="6" lg="12">
-        <v-sheet rounded="lg" class="pa-13 elevation-4">
+        <v-sheet rounded="md" class="pa-13 elevation-4">
           <div class="d-flex justify-center">
             <v-avatar size="150">
               <img
