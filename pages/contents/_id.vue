@@ -123,8 +123,24 @@ export default {
   },
 }
 </script>
+
 <style >
-.v-chip {
-  pointer-events: none !important;
-}
+  .v-chip {
+    pointer-events: none !important;
+  }
+  .scroller::-webkit-scrollbar-track {
+    background-color: lightgray;
+    border-radius: 20px;
+  }
+  .scroller::-webkit-scrollbar-thumb {
+    background: #b3b3b3;
+    border-radius: 20px;
+  }
+  .scroller::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  .scroller::-webkit-scrollbar-thumb:hover {
+    background: #808080;
+  }
 </style>
