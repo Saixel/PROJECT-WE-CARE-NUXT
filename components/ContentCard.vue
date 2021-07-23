@@ -29,7 +29,7 @@
     <v-card-subtitle> </v-card-subtitle>
     <v-divider class="mx-4 mt-n4"></v-divider>
     <v-card-text style="height: 10vh">
-      <div>
+      <div class="limit-text-3">
         {{ content.description }}
       </div>
     </v-card-text>
@@ -51,8 +51,8 @@
     <v-expand-transition>
       <v-card
         v-if="reveal"
-        class="transition-fast-in-fast-out v-card--reveal "
-        style="height: 100%"
+        class="transition-fast-in-fast-out v-card--reveal"
+        style="background: #f0f8ff; height: 100%"
       >
         <v-list-item class="d-flex">
           <v-list-item-content class="align-self-start pt-4">
@@ -73,14 +73,20 @@
 
         <v-divider class="mx-4"></v-divider>
         <v-card-text>
-          <p>{{ content.author.description }}</p>
+          <div class="limit-text-4">{{ content.author.description }}</div>
         </v-card-text>
-        <v-card-actions class="pt-0">
-          <v-btn text color="primary darken-1" @click="reveal = false">
-            Cerrar
-          </v-btn>
-          <v-spacer></v-spacer>
-          <v-btn text color="primary darken-4">Ir al profesional</v-btn>
+
+        <v-card-actions class="pt-0 mb-n5">
+          <v-row class="mt-13">
+            <v-col>
+              <v-btn text color="primary darken-1" @click="reveal = false">
+                Cerrar
+              </v-btn>
+            </v-col>
+            <v-col>
+              <v-btn text color="primary darken-4"> Ir al profesional </v-btn>
+            </v-col>
+          </v-row>
         </v-card-actions>
       </v-card>
     </v-expand-transition>
@@ -127,5 +133,21 @@ export default {
 .card-actions {
   position: absolute;
   bottom: 0;
+}
+
+.limit-text-3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+.limit-text-4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* number of lines to show */
+  -webkit-box-orient: vertical;
 }
 </style>
