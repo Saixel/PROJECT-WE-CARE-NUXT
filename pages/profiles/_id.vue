@@ -6,8 +6,14 @@
         <h4>{{content.content[currActIdx].description}}</h4>
         <h4>{{content.content[currActIdx].instructions}}</h4>
         <v-divider class="my-5"></v-divider>
-        <div><v-chip v-for="(word, i) in split" :key="i" color="purple lighten-2" class="mx-3">{{word}}</v-chip></div>
-        <v-btn color="success" class="my-10" @click="content.content[currActIdx].done = true; if(currActIdx < content.content.length - 1){currActIdx++}">Comprobar</v-btn>
+        <dnd-zone>
+          <dnd-container>
+            <dnd-item v-for="(word, i) in split" :key="i">
+              <v-chip color="purple lighten-2" class="mx-3">{{word}}</v-chip>
+            </dnd-item>
+          </dnd-container>
+        </dnd-zone>
+        <div><v-btn color="success" class="my-10" @click="content.content[currActIdx].done = true; if(currActIdx < content.content.length - 1){currActIdx++}">Comprobar</v-btn></div>
       </v-col>
       <v-col cols="3" class="elevation-4" style="overflow: scroll; height: 85vh">
         <h3 style="text-align: center">Actividades</h3>

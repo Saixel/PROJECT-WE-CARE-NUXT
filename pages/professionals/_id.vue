@@ -74,7 +74,7 @@
         </v-sheet>
       </v-col> -->
       <!-- <hr style="width: 100%" class="mt-5"> -->
-    </v-row>
+    </v-row>    
     <v-row class="mt-10">
       <v-col cols="12"><h1 style="color: white; text-shadow: 2px 3px 5px black" class="d-flex justify-center">Paquetes hechos por&nbsp; <span class="blue--text text--lighten-3">{{professional.name}}</span></h1></v-col>
       <v-col v-for="(content, idx) in contents" :key="idx" sm="6" lg="4">
