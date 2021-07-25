@@ -60,7 +60,7 @@
                     {{ content.price.toUpperCase() }}
                   </v-chip>
                 </h2>
-                <v-btn color="primary" @click="initPayment">Comprar</v-btn>
+                <v-btn v-if="$auth.loggedIn" color="primary" @click="initPayment">Comprar</v-btn>
               </v-col>
             </v-row>
           </v-container>
@@ -152,7 +152,7 @@ export default {
             email: token.email
           }
           const loadingComponent = this.$loading.open()
-          axios.post('myapiurl', payload)
+          axios.post('/payments', payload)
             .then(response => {
               loadingComponent.close()
             })
