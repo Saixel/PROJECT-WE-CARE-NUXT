@@ -52,7 +52,7 @@
       </nuxt-link>
 
       <nuxt-link :to="{ name: 'login', params: { step: 2 } }">
-        <v-btn color="white" text rounded class="my-2">
+        <v-btn color="primary" rounded class="my-2">
           <strong>registrarse</strong>
         </v-btn>
       </nuxt-link>
