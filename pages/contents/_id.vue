@@ -22,25 +22,9 @@
       <v-col xs="12" sm="9" lg="3">
         <v-card height="460">
           <v-img class="cursor" height="280" src="/alexprofile1.jpg"></v-img>
-          <!-- <v-card-text>
-            <v-row align="center" class="mx-0">
-              <v-rating
-                :value="4.5"
-                color="amber"
-                dense
-                half-increments
-                readonly
-                size="14"
-              ></v-rating>
-
-              <div class="grey--text ms-4">
-                <h4>4.5 (413)</h4>
-              </div>
-            </v-row>
-          </v-card-text> -->
-            <v-card-title class="mt-n2">
-              {{ content.author.name }}
-            </v-card-title>
+          <v-card-title class="mt-n2">
+            {{ content.author.name }}
+          </v-card-title>
 
           <v-card-text class="mt-n4">
             <h4 class="text-decoration-underline">
@@ -144,9 +128,6 @@ export default {
     script.onload = () => this.initStripe()
     document.body.appendChild(script)
   },
-  // computed: {
-
-  // },
   methods: {
     initStripe() {
       this.stripeHandler = StripeCheckout.configure({
@@ -165,8 +146,9 @@ export default {
           // console.log('THIS ---->', this)
           // const loadingComponent = this.$loading.open()
 
-          this.$axios.$post('/payments', payload)
-            .then(response => {
+          this.$axios
+            .$post('/payments', payload)
+            .then((response) => {
               // loadingComponent.close()
             })
             .catch((error) => {
@@ -195,22 +177,22 @@ export default {
 </script>
 
 <style >
-  .v-chip {
-    pointer-events: none !important;
-  }
-  .scroller::-webkit-scrollbar-track {
-    background-color: lightgray;
-    border-radius: 20px;
-  }
-  .scroller::-webkit-scrollbar-thumb {
-    background: #b3b3b3;
-    border-radius: 20px;
-  }
-  .scroller::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
-  .scroller::-webkit-scrollbar-thumb:hover {
-    background: #808080;
-  }
+.v-chip {
+  pointer-events: none !important;
+}
+.scroller::-webkit-scrollbar-track {
+  background-color: lightgray;
+  border-radius: 20px;
+}
+.scroller::-webkit-scrollbar-thumb {
+  background: #b3b3b3;
+  border-radius: 20px;
+}
+.scroller::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.scroller::-webkit-scrollbar-thumb:hover {
+  background: #808080;
+}
 </style>

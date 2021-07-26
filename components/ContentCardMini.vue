@@ -1,4 +1,8 @@
 <template>
+    <nuxt-link
+      :to="{ path: `/profiles/${content._id}` }"
+      style="text-decoration: none; color: inherit"
+    >
   <v-card
     :loading="loading"
     class="mx-auto mt-6 rounded-lg"
@@ -6,12 +10,8 @@
     width="250"
     style="background: #f0f8ff"
   >
-    <nuxt-link
-      :to="{ path: `/profiles/${content._id}` }"
-      style="text-decoration: none; color: inherit"
-    >
       <v-card-title style="text-overflow: ellipsis"
-        >{{ content.title }} <v-spacer></v-spacer>
+        >{{ content.title }}
       </v-card-title>
       <div
         :class="$vuetify.breakpoint.mobile ? '' : 'scroller'"
@@ -32,8 +32,8 @@
           {{ content.description }}
         </div>
       </v-card-text>
-    </nuxt-link>
   </v-card>
+    </nuxt-link>
 </template>
 
 <script>
@@ -63,4 +63,11 @@ export default {
   position: absolute;
   width: 100%;
 }
+.limit-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
 </style>

@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col>
-      <v-sheet rounded="lg" class="mx-auto" elevation="8" max-width="1200">
+      <v-sheet cols="12" rounded="lg" class="mx-auto" elevation="8" max-width="1200">
         <v-slide-group
           v-model="model"
           class="py-2 px-4"
