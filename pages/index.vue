@@ -14,20 +14,17 @@
         </div>
       </v-col>
     </v-row>
-    <v-row v-if="!($auth.loggedIn)" align="center" justify="left">
-      <v-col>
+    <v-row v-if="!($auth.loggedIn)">
+      <v-col sm="12" md="4">
         <v-card class="elevation-12">
           <v-card-title>WORKING ON IT</v-card-title>
         </v-card>
       </v-col>
-      <v-col cols="12" sm="8">
+      <v-col sm="12" md="8">
         <v-card class="elevation-12">
-          <v-window v-model="curr_step">
-            <v-window-item :value="1">
-              <Login @stepChange="changeStep" />
-            </v-window-item>
-            <v-window-item :value="2">
-              <Register @stepChange="changeStep" />
+          <v-window>
+            <v-window-item>
+              <LoginHome />
             </v-window-item>
           </v-window>
         </v-card>
