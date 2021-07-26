@@ -86,7 +86,6 @@ export default {
       password: '',
       confirmPassword: '',
       formHasErrors: false,
-      snackbar: false,
       rules: {
         email: (value) =>
           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
@@ -111,6 +110,9 @@ export default {
     },
   },
   methods: {
+    stepChange() {
+      this.$emit('stepChange', 1)
+    },
     submit() {
       this.formHasErrors = false
 
@@ -135,9 +137,6 @@ export default {
           password: this.password,
         },
       })
-    },
-    stepChange() {
-      this.$emit('stepChange', 1)
     },
   },
 }
