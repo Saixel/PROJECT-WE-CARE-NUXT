@@ -76,8 +76,8 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'https://we-care-project.herokuapp.com/api',
-    // baseURL: 'http://localhost:8000/api'
+    // baseURL: 'https://we-care-project.herokuapp.com/api',
+    baseURL: 'http://localhost:8000/api'
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
