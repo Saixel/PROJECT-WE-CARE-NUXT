@@ -3,33 +3,29 @@
     :loading="loading"
     class="mx-auto mt-6 rounded-md card-outter"
     max-width="450"
-    style="background: #f0f8ff; border: 1px solid black"
+    style="border: 1px solid black"
   >
-    <v-card-title
+    <v-card-title style="background: #e1effc"
       ><span
-        style="
-          text-overflow: 'ellipsis';
-          width: 70%;
-          overflow: hidden;
-          height: 1.2em;
-        "
+        class="limit-text"
+        style="font-size: 18px; height: 1.6em"
+        title="content.title"
         >{{ content.title }}</span
       >
       <v-spacer></v-spacer>
-      <!-- color="green lighten-3" -->
-
-      <v-chip v-bind:color="content.price == 'free' ? 'green' : 'blue'">{{
-        content.price.toUpperCase()
-      }}</v-chip></v-card-title
+      <v-chip
+        text-color="white"
+        v-bind:color="content.price == 'free' ? 'green' : 'blue'"
+        >{{ content.price.toUpperCase() }}</v-chip
+      ></v-card-title
     >
-    <v-card-subtitle>{{ content.author.name }}</v-card-subtitle>
-    <span class="ms-4" v-for="(colle, i) in content.collective" :key="i">
+    <v-divider class="mb-2"></v-divider>
+    <span class="ml-2" v-for="(colle, i) in content.collective" :key="i">
       <v-chip color="#eee">{{ colle.name }}</v-chip>
     </span>
-    <v-card-subtitle> </v-card-subtitle>
-    <v-divider class="mx-4 mt-n4"></v-divider>
+
     <v-card-text style="height: 10vh">
-      <div>
+      <div class="limit-line-3 letter-size">
         {{ content.description }}
       </div>
     </v-card-text>
@@ -51,10 +47,10 @@
     <v-expand-transition>
       <v-card
         v-if="reveal"
-        class="transition-fast-in-fast-out v-card--reveal "
+        class="transition-fast-in-fast-out v-card--reveal"
         style="height: 100%"
       >
-        <v-list-item class="d-flex">
+        <v-list-item class="d-flex" style="background: #f0f8ff">
           <v-list-item-content class="align-self-start pt-4">
             <h2>{{ content.author.name }}</h2>
             <!-- <h4 class="grey--text">-Luchar es el primer paso al triunfo-</h4> -->
@@ -71,16 +67,20 @@
           </v-list-item-avatar>
         </v-list-item>
 
-        <v-divider class="mx-4"></v-divider>
+        <v-divider></v-divider>
         <v-card-text>
-          <p>{{ content.author.description }}</p>
+          <div class="limit-line-4">{{ content.author.description }}</div>
         </v-card-text>
-        <v-card-actions class="pt-0">
-          <v-btn text color="primary darken-1" @click="reveal = false">
-            Cerrar
-          </v-btn>
-          <v-spacer></v-spacer>
-          <v-btn text color="primary darken-4">Ir al profesional</v-btn>
+
+        <v-card-actions class="my-7" >
+          <v-row>
+            <v-col>
+              <v-btn text color="primary darken-1" @click="reveal = false">
+                Cerrar
+              </v-btn>
+              <v-btn text color="primary darken-4"> Ir al profesional </v-btn>
+            </v-col>
+          </v-row>
         </v-card-actions>
       </v-card>
     </v-expand-transition>
@@ -127,5 +127,32 @@ export default {
 .card-actions {
   position: absolute;
   bottom: 0;
+}
+
+.limit-line-3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+.limit-line-4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+.limit-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 270px;
+}
+
+.letter-size::first-letter {
+  color: rgb(0, 0, 0);
+  font-size: 120%;
 }
 </style>
