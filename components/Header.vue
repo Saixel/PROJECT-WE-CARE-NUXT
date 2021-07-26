@@ -34,11 +34,11 @@
 
         <v-list>
           <nuxt-link :to="{ path: '/profiles' }">
-            <v-list-item text rounded class="my-1"> PROFILE </v-list-item>
+            <v-list-item text rounded class="my-1"> PERFIL </v-list-item>
           </nuxt-link>
           <v-divider />
           <v-list-item text rounded class="my-1" @click="logout">
-            LOGOUT
+            DESCONECTAR
           </v-list-item>
         </v-list>
       </v-menu>
@@ -47,13 +47,13 @@
     <div v-else-if="!$auth.loggedIn && $route.name !== 'login'">
       <nuxt-link :to="{ name: 'login', params: { step: 1 } }">
         <v-btn color="white" text rounded class="my-2">
-          <strong>LOGIN</strong>
+          <strong>iniciar sesión</strong>
         </v-btn>
       </nuxt-link>
 
       <nuxt-link :to="{ name: 'login', params: { step: 2 } }">
-        <v-btn color="white" text rounded class="my-2">
-          <strong>REGISTER</strong>
+        <v-btn color="primary" rounded class="my-2">
+          <strong>registrarse</strong>
         </v-btn>
       </nuxt-link>
     </div>
@@ -64,20 +64,20 @@
 export default {
   data: () => ({
     links: [
+      // {
+      //   name: 'home',
+      //   path: '/',
+      // },
       {
-        name: 'home',
-        path: '/',
-      },
-      {
-        name: 'news',
+        name: 'noticias',
         path: '/news',
       },
       {
-        name: 'contents',
+        name: 'contenidos',
         path: '/contents',
       },
       {
-        name: 'professionals',
+        name: 'profesionales',
         path: '/professionals',
       },
     ],

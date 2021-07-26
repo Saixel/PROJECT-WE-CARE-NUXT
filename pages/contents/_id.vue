@@ -54,11 +54,14 @@
             <v-row>
               <v-col class="d-flex justify-space-around">
                 <h2>
-                  <v-chip color="#eee">
+                  <v-chip v-if="(content.cost)" color="#eee">
+                    {{ content.cost | currency }}
+                  </v-chip>
+                  <v-chip v-else color="#eee">
                     {{ content.price.toUpperCase() }}
                   </v-chip>
                 </h2>
-                <v-btn color="primary">Comprar</v-btn>
+                <v-btn v-if="$auth.loggedIn" color="primary" @click="initPayment">Comprar</v-btn>
               </v-col>
             </v-row>
           </v-container>
@@ -77,7 +80,7 @@
             >
               <v-expansion-panel-header>
                 {{ content.content[i].title }}
-                <template v-slot:actions>
+                <template #actions>
                   <v-icon color="primary"> $expand </v-icon>
                 </template>
               </v-expansion-panel-header>
@@ -117,10 +120,65 @@
 </template>
 
 <script>
+ /* eslint-disable */
+
 export default {
   async asyncData({ $axios, params }) {
     return { content: await $axios.$get(`/content/${params.id}`) }
   },
+  data () {
+    return {
+      stripeHandler: null
+    }
+  },
+  created () {
+    const script = document.createElement('script')
+    script.src = 'https://checkout.stripe.com/checkout.js'
+    script.onload = () => this.initStripe()
+    document.body.appendChild(script)
+  },
+  // computed: {
+
+  // },
+  methods: {
+    initStripe () {
+      this.stripeHandler = StripeCheckout.configure({
+        key: 'pk_test_51JH9VBFDfuZMZbN5N18c6apN1pJn3MwHMENn3iSA0TuNtH3N3mbcKXvkf9yjXzPW1RAMtSltwFF3BqGJ4k8uOIU700LRXEkMea',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png',
+        locale: 'es',
+        token: (token) => {
+          const payload = {
+            token: token.id,
+            product: this.content,
+            email: token.email
+          }
+          const loadingComponent = this.$loading.open()
+          axios.post('/payments', payload)
+            .then(response => {
+              loadingComponent.close()
+            })
+            .catch(error => {
+              console.log(error.response)
+            })
+        }
+      })
+    },
+    initPayment () {
+      this.stripeHandler.open({
+        name: 'We Care',
+        description: 'Prueba de pago',
+        currency: 'eur',
+        zipCode: true,
+        billingAddress: true,
+        amount: parseFloat(this.cost) * 100
+      })
+    }
+  },
+  filters: {
+    currencty (val) {
+      return `${val.toFixed(2)} €`
+    }
+  }
 }
 </script>
 

@@ -28,17 +28,16 @@
         ></v-divider>
         <v-col>
           <v-container
-            style="height: 500px"
+            style="height: 700px"
             class="px-5 py-9 text-center scrollBar"
             fluid
           >
             <h1>Ejercicios</h1>
-            <p>Aquí van los Ejercicios</p>
             <v-row if="contents">
               <v-col
-                lg="6"
                 v-for="(content, i) in contents"
                 :key="i"
+                lg="6"
                 class="ma-0"
                 style="margin: 0"
               >

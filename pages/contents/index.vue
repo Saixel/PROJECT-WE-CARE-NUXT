@@ -1,7 +1,7 @@
 <template>
   <v-container v-if="contents">
     <v-row>
-      <v-col v-for="(content, idx) in contents" :key="idx" sm="6" lg="4">
+      <v-col v-for="(content, idx) in contents" :key="idx" xs="12" sm="12" md="6" lg="4" xl="3">
         <ContentCard :content="content" height="300" class="elevation-5" />
       </v-col>
     </v-row>
