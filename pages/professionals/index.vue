@@ -5,8 +5,7 @@
       <v-col
         v-for="(professional, idx) in professionals"
         :key="idx"
-        sm="6"
-        lg="4"
+         xs="12" sm="12" md="6" lg="4" xl="3"
       >
         <ProfessionalCard :professional="professional" />
       </v-col>

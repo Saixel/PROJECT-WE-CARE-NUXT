@@ -8,9 +8,15 @@
       </v-toolbar-title>
     </nuxt-link>
 
-    <v-btn v-for="(link, idx) in links" :key="idx" text rounded>
-      <nuxt-link :to="{ path: link.path }">{{ link.name }}</nuxt-link>
-    </v-btn>
+    <nuxt-link
+      v-for="(link, idx) in links"
+      :key="idx"
+      :to="{ path: link.path }"
+    >
+      <v-btn text rounded>
+        {{ link.name }}
+      </v-btn>
+    </nuxt-link>
 
     <v-spacer />
 
@@ -27,28 +33,29 @@
         </template>
 
         <v-list>
-          <v-list-item text rounded class="my-1">
-            <nuxt-link :to="{ path: '/profiles' }"> PROFILE </nuxt-link>
-          </v-list-item>
+          <nuxt-link :to="{ path: '/profiles' }">
+            <v-list-item text rounded class="my-1"> PERFIL </v-list-item>
+          </nuxt-link>
+          <v-divider />
           <v-list-item text rounded class="my-1" @click="logout">
-            <nuxt-link :to="{ path: '/' }"> LOGOUT </nuxt-link>
+            DESCONECTAR
           </v-list-item>
         </v-list>
       </v-menu>
     </div>
 
-    <div v-else>
-      <v-btn color="white" text rounded class="my-2">
-        <nuxt-link :to="{ path: '/login' }">
-          <strong>LOGIN</strong>
-        </nuxt-link>
-      </v-btn>
+    <div v-else-if="!$auth.loggedIn && $route.name !== 'login'">
+      <nuxt-link :to="{ name: 'login', params: { step: 1 } }">
+        <v-btn color="white" text rounded class="my-2">
+          <strong>iniciar sesión</strong>
+        </v-btn>
+      </nuxt-link>
 
-      <v-btn color="white" text rounded class="my-2">
-        <nuxt-link :to="{ path: '/login' }">
-          <strong>REGISTER</strong>
-        </nuxt-link>
-      </v-btn>
+      <nuxt-link :to="{ name: 'login', params: { step: 2 } }">
+        <v-btn color="primary" rounded class="my-2">
+          <strong>registrarse</strong>
+        </v-btn>
+      </nuxt-link>
     </div>
   </v-app-bar>
 </template>
@@ -57,20 +64,20 @@
 export default {
   data: () => ({
     links: [
+      // {
+      //   name: 'home',
+      //   path: '/',
+      // },
       {
-        name: 'home',
-        path: '/',
-      },
-      {
-        name: 'news',
+        name: 'noticias',
         path: '/news',
       },
       {
-        name: 'contents',
+        name: 'contenidos',
         path: '/contents',
       },
       {
-        name: 'professionals',
+        name: 'profesionales',
         path: '/professionals',
       },
     ],
