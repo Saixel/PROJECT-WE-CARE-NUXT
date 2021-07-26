@@ -1,4 +1,8 @@
 <template>
+    <nuxt-link
+      :to="{ path: `/contents/${content._id}` }"
+      style="text-decoration: none; color: inherit"
+    >
   <v-card
     class="mx-1 rounded-md elevation-2"
     max-width="300"
@@ -6,18 +10,14 @@
     outlined
     style="background: #f0f8ff; border: 1px solid black"
   >
-    <nuxt-link
-      :to="{ path: `/professionals/${professional._id}` }"
-      style="text-decoration: none; color: inherit"
-    >
       <v-list-item three-line>
         <v-list-item-content>
           <!-- <div class="text-overline mb-4">PROFESSIONAL</div> -->
           <v-list-item-title class="text-h5 mb-1">
-            {{ professional.name }}
+            {{ content.title }}
           </v-list-item-title>
           <v-list-item-subtitle>
-            {{ professional.description }}
+            {{ content.description }}
           </v-list-item-subtitle>
         </v-list-item-content>
 
@@ -26,19 +26,19 @@
         </v-list-item-avatar>
       </v-list-item>
       <v-row>
-        <v-col class="d-flex justify-end mx-3 mt-n3">
-          <span>Count: 5 </span>
+        <v-col color="orange" class="d-flex justify-end mx-3 mt-n3">
+          <span>Count: 5</span>
           <v-icon dense color="red lighten-2"> mdi-heart </v-icon>
         </v-col>
       </v-row>
-    </nuxt-link>
   </v-card>
+    </nuxt-link>
 </template>
 
 <script>
 export default {
   props: {
-    professional: Object,
+    content: Object,
   },
 }
 </script>

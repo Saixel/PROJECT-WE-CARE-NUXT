@@ -1,6 +1,6 @@
 <template>
   <v-container v-if="professionals">
-    <Carousel :items="topProfessionals" />
+    <CarouselProfessional :items="topProfessionals" />
     <v-row>
       <v-col
         v-for="(professional, idx) in professionals"
