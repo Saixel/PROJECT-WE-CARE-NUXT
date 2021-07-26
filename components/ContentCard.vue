@@ -17,8 +17,7 @@
         text-color="white"
         v-bind:color="content.price == 'free' ? 'green' : 'blue'"
         >{{ content.price.toUpperCase() }}</v-chip
-      ></v-card-title
-    >
+      ></v-card-title>
     <v-divider class="mb-2"></v-divider>
     <span class="ml-2" v-for="(colle, i) in content.collective" :key="i">
       <v-chip color="#eee">{{ colle.name }}</v-chip>
@@ -72,7 +71,7 @@
           <div class="limit-line-4">{{ content.author.description }}</div>
         </v-card-text>
 
-        <v-card-actions class="my-7" >
+        <v-card-actions class="my-7 " >
           <v-row>
             <v-col>
               <v-btn text color="primary darken-1" @click="reveal = false">

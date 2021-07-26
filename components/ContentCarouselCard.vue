@@ -1,38 +1,38 @@
 <template>
-    <nuxt-link
-      :to="{ path: `/contents/${content._id}` }"
-      style="text-decoration: none; color: inherit"
-    >
-  <v-card
-    class="mx-1 rounded-md elevation-2"
-    max-width="300"
-    height="150"
-    outlined
-    style="background: #f0f8ff; border: 1px solid black"
+  <nuxt-link
+    :to="{ path: `/contents/${content._id}` }"
+    style="text-decoration: none; color: inherit"
   >
-      <v-list-item three-line>
-        <v-list-item-content>
-          <!-- <div class="text-overline mb-4">PROFESSIONAL</div> -->
-          <v-list-item-title class="text-h5 mb-1">
+    <v-card
+      class="mx-1 rounded-md elevation-2"
+      max-width="300"
+      height="150"
+      outlined
+      style="border: 1px solid black"
+    >
+      <div>
+        <v-list-item-content style="background: #e1effc">
+          <v-list-item-title class="ml-3" style="font-size: 18px">
             {{ content.title }}
           </v-list-item-title>
-          <v-list-item-subtitle>
-            {{ content.description }}
-          </v-list-item-subtitle>
         </v-list-item-content>
+        <v-divider> </v-divider>
 
-        <v-list-item-avatar tile size="80">
-          <v-img src="/profile1.png"></v-img>
-        </v-list-item-avatar>
-      </v-list-item>
+        <v-card-subtitle>
+          <div class="limit-line-2 pa-0">
+            {{ content.description }}
+          </div>
+        </v-card-subtitle>
+      </div>
+
       <v-row>
-        <v-col color="orange" class="d-flex justify-end mx-3 mt-n3">
+        <v-col color="orange" class="d-flex justify-end mr-3">
           <span>Count: 5</span>
           <v-icon dense color="red lighten-2"> mdi-heart </v-icon>
         </v-col>
       </v-row>
-  </v-card>
-    </nuxt-link>
+    </v-card>
+  </nuxt-link>
 </template>
 
 <script>
@@ -42,3 +42,12 @@ export default {
   },
 }
 </script>
+<style scoped>
+.limit-line-2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+</style>
