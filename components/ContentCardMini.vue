@@ -11,7 +11,7 @@
       style="text-decoration: none; color: inherit"
     >
       <v-card-title style="text-overflow: ellipsis"
-        >{{ content.title }} <v-spacer></v-spacer>
+        >{{ content.title }} {{ content._id }}<v-spacer></v-spacer>
       </v-card-title>
       <div
         :class="$vuetify.breakpoint.mobile ? '' : 'scroller'"

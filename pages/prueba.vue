@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="simple-page">
+      {{items}}
         <Container @drop="onDrop">            
           <Draggable v-for="item in items" :key="item.id">
             <div class="draggable-item">
@@ -25,12 +26,13 @@ export default {
   },
   methods: {
     onDrop(dropResult) {
+      console.log(dropResult)
       this.items = this.applyDrag(this.items, dropResult);
     },
     applyDrag(arr, dragResult) {
       const { removedIndex, addedIndex, payload } = dragResult
       if (removedIndex === null && addedIndex === null) return arr
-
+      
       const result = [...arr]
       let itemToAdd = payload
 
@@ -46,12 +48,13 @@ export default {
     },
 
     generateItems(count, creator) {
+      console.log('creator: ', creator())
       const result = []
       for (let i = 0; i < count; i++) {
         result.push(creator(i))
       }
       return result
-    }    
+    }
   }
 };
 </script>

@@ -100,7 +100,7 @@ export default {
   data() {
     return {
       expand: false,
-      collectives: ['LOOK WHO', 'WE GOT HERE', 'IF IT', 'ISN\'T MR', 'COLLECTIVES', 'HIMSELF!','WHAT BRINGS','SUCH A','HANDSOME FELLA','AS YOURSELF', 'TO THIS TOWN']
+      collectives: ['TEST COLLECTIVE 1', 'TEST COLLECTIVE 2', 'TEST COLLECTIVE 3', 'TEST COLLECTIVE 4', 'TEST COLLECTIVE 5']
     }
   }
 }
