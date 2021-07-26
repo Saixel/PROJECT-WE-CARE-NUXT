@@ -152,10 +152,14 @@ export default {
             product: this.content,
             email: token.email
           }
-          const loadingComponent = this.$loading.open()
-          axios.post('/payments', payload)
+          console.log('Token ---->', token)
+          console.log('Content ---->', this.content)
+          // console.log('THIS ---->', this)
+          // const loadingComponent = this.$loading.open()
+
+          this.$axios.$post('/payments', payload)
             .then(response => {
-              loadingComponent.close()
+              // loadingComponent.close()
             })
             .catch(error => {
               console.log(error.response)
