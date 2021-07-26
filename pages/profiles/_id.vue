@@ -16,13 +16,13 @@
           <!-- </div> -->
         </div>
         <div><v-btn color="success" class="my-10" @click="validateAnswer">Comprobar</v-btn></div>
-        {{activities}}
-        {{items}}
         <span class="red--text" v-if="wrongAnswer">Respuesta incorrecta</span>
+        <!-- {{activities}}
+        {{items}} -->
       </v-col>
       <v-col cols="3" class="elevation-4" style="overflow: scroll; height: 85vh">
         <h3 style="text-align: center">Actividades</h3>
-        <v-btn text v-for="(act, i) in content.content" class="my-1" @click="currActIdx = i" :key="`content${i}`"><v-icon v-if="activities[i].done">mdi-checkbox-marked-circle</v-icon>{{act.title}}</v-btn>
+        <v-btn text v-for="(act, i) in content.content" class="my-1" @click="switchActivity(i)" :key="`content${i}`"><v-icon v-if="activities[i].done">mdi-checkbox-marked-circle</v-icon>{{act.title}}</v-btn>
         <v-btn text plain v-for="(act, i) in 20" :key="`overflow${i}`">TESTING OVERFLOW Nº{{i}}</v-btn>
       </v-col>
       <!-- <v-col class="pa-10" cols="1">
@@ -187,6 +187,10 @@ export default {
     },
   },
    methods: {
+    switchActivity(actNum) {
+      this.currActIdx = actNum
+      this.items = this.generateItems(this.activities[this.currActIdx].pieces.length, i => ({ id: `id${i}`, data: this.activities[this.currActIdx].pieces[i]}))
+    },
     validateAnswer() {
       let match = true
       if(this.activities[this.currActIdx].activity.phrase.split(' ').forEach((word, i) => {if(word !== this.items[i].data){console.log('HELP THERES AN ERROR IN HERE'); this.wrongAnswer = true; match = false }}))
@@ -195,6 +199,7 @@ export default {
         this.wrongAnswer = false
         this.activities[this.currActIdx].done = true;
         if(this.currActIdx < this.content.content.length - 1){this.currActIdx++}
+        this.items = this.generateItems(this.activities[this.currActIdx].pieces.length, i => ({ id: `id${i}`, data: this.activities[this.currActIdx].pieces[i]}))
       }
     },
     onDrop(dropResult) {
@@ -223,7 +228,7 @@ export default {
         result.push(creator(i))
       }
       return result
-    }    
+    }
   },
   created() {
     this.items = this.generateItems(this.activities[this.currActIdx].pieces.length, i => ({ id: `id${i}`, data: this.activities[this.currActIdx].pieces[i]}))
