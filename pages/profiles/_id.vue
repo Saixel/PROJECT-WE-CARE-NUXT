@@ -7,14 +7,14 @@
         <h4>{{activities[currActIdx].activity.instructions}}</h4>
         <v-divider class="my-5"></v-divider>
         <div class="d-flex flex-column align-center">
-          <Container @drop="onDrop; dragging = true" orientation="horizontal" lock-axis="x">
+          <Container @drop="onDrop" orientation="horizontal" lock-axis="x">
             <Draggable v-for="item in items" :key="item.id">
-              <v-chip label :style="`font-size: 2em; cursor: ${dragging ? 'grabbing' : 'grab'}`" color="purple"
+              <v-chip label style="font-size: 2em;" color="purple"
                 class="py-6 mx-1 draggable-item white--text">{{item.data}}</v-chip>
             </Draggable>
           </Container>
         </div>
-        <div><v-btn style="font-size: 2em" color="success" class="my-10 py-6" @click="validateAnswer">Comprobar</v-btn></div>
+        <div><v-btn style="font-size: 1.2em" color="success" class="my-10 py-4" @click="validateAnswer">Comprobar</v-btn></div>
         <span style="font-size: 2em" class="red--text" v-if="wrongAnswer">Respuesta incorrecta</span>
         <!-- {{activities}}
         {{items}} -->
@@ -179,8 +179,7 @@ export default {
     currActIdx: 0,
     items: [],
     split: ['Paca', 'la', 'alpaca', 'es', 'muy', 'flaca'],
-    wrongAnswer: false,
-    dragging: false
+    wrongAnswer: false
   }),
   watch: {
     group () {
@@ -251,5 +250,11 @@ export default {
   }
   .scroller::-webkit-scrollbar-thumb:hover {
     background: #808080;
+  }
+  .draggable-item {
+    cursor: grab;
+  }
+  .draggable-item:active {
+    cursor: grabbing;
   }
 </style>
