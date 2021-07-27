@@ -14,12 +14,13 @@
       >
       <v-spacer></v-spacer>
       <v-chip
+        :color="content.price == 'free' ? 'green' : 'blue'"
         text-color="white"
-        v-bind:color="content.price == 'free' ? 'green' : 'blue'"
         >{{ content.price.toUpperCase() }}</v-chip
-      ></v-card-title>
+      ></v-card-title
+    >
     <v-divider class="mb-2"></v-divider>
-    <span class="ml-2" v-for="(colle, i) in content.collective" :key="i">
+    <span v-for="(colle, i) in content.collective" :key="i" class="ml-2">
       <v-chip color="#eee">{{ colle.name }}</v-chip>
     </span>
 
@@ -71,7 +72,7 @@
           <div class="limit-line-4">{{ content.author.description }}</div>
         </v-card-text>
 
-        <v-card-actions class="my-7 " >
+        <v-card-actions class="my-7">
           <v-row>
             <v-col>
               <v-btn text color="primary darken-1" @click="reveal = false">
@@ -90,7 +91,10 @@
 export default {
   name: 'ContentCard',
   props: {
-    content: Object,
+    content: {
+      type: Object,
+      default: null,
+    },
   },
   data: () => ({
     loading: false,

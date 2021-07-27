@@ -5,7 +5,11 @@
       <v-col
         v-for="(professional, idx) in professionals"
         :key="idx"
-         xs="12" sm="12" md="6" lg="4" xl="3"
+        xs="12"
+        sm="12"
+        md="6"
+        lg="4"
+        xl="3"
       >
         <ProfessionalCard :professional="professional" />
       </v-col>
@@ -23,9 +27,9 @@ export default {
     }
   },
   computed: {
-    topProfessionals () {
+    topProfessionals() {
       return this.professionals.slice(0, 7)
-    }
-  }
+    },
+  },
 }
 </script>

@@ -18,11 +18,9 @@
             </v-list-item-title>
             <v-divider></v-divider>
             <div>
-              
-                <v-card-subtitle class="limit-line-2 pa-0">
-                  {{ professional.description }}
-                </v-card-subtitle>
-              
+              <v-card-subtitle class="limit-line-2 pa-0">
+                {{ professional.description }}
+              </v-card-subtitle>
             </div>
           </v-list-item-content>
 
@@ -45,7 +43,10 @@
 <script>
 export default {
   props: {
-    professional: Object,
+    professional: {
+      type: Object,
+      default: null,
+    },
   },
 }
 </script>

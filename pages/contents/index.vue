@@ -24,7 +24,8 @@ export default {
   },
   computed: {
     topContents() {
-      return this.contents.slice(0, 7)
+      // return this.contents.slice(0, 7)
+      return this.contents
     },
   },
 }

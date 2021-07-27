@@ -1,15 +1,15 @@
 <template>
-    <nuxt-link
-      :to="{ path: `/profiles/${content._id}` }"
-      style="text-decoration: none; color: inherit"
-    >
-  <v-card
-    :loading="loading"
-    class="mx-auto mt-6 rounded-lg"
-    height="300"
-    width="250"
-    style="background: #f0f8ff"
+  <nuxt-link
+    :to="{ path: `/profiles/${content._id}` }"
+    style="text-decoration: none; color: inherit"
   >
+    <v-card
+      :loading="loading"
+      class="mx-auto mt-6 rounded-lg"
+      height="300"
+      width="250"
+      style="background: #f0f8ff"
+    >
       <v-card-title style="text-overflow: ellipsis"
         >{{ content.title }}
       </v-card-title>
@@ -32,15 +32,18 @@
           {{ content.description }}
         </div>
       </v-card-text>
-  </v-card>
-    </nuxt-link>
+    </v-card>
+  </nuxt-link>
 </template>
 
 <script>
 export default {
   name: 'ContentCard',
   props: {
-    content: Object,
+    content: {
+      type: Object,
+      default: null,
+    },
   },
   data: () => ({
     loading: false,
@@ -69,5 +72,4 @@ export default {
   text-overflow: ellipsis;
   max-width: 200px;
 }
-
 </style>

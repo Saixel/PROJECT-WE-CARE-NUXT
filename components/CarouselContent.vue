@@ -2,7 +2,7 @@
   <v-row>
     <v-col>
       <h1 class="ml-5">-Paquetes destacados-</h1>
-      <v-sheet cols="12" rounded="lg" class="mx-auto" elevation="8" >
+      <v-sheet cols="12" rounded="lg" class="mx-auto" elevation="8">
         <v-slide-group
           v-model="model"
           class="py-2 px-4"
@@ -19,11 +19,14 @@
 </template>
 <script>
 export default {
+  props: {
+    items: {
+      type: Array,
+      default: null,
+    },
+  },
   data: () => ({
     model: null,
   }),
-  props: {
-    items: Array,
-  },
 }
 </script>

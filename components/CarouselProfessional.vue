@@ -19,11 +19,14 @@
 </template>
 <script>
 export default {
+  props: {
+    items: {
+      type: Array,
+      default: null,
+    },
+  },
   data: () => ({
     model: null,
   }),
-  props: {
-    items: Array,
-  },
 }
 </script>
