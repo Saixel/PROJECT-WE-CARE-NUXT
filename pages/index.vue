@@ -29,24 +29,26 @@ import { Container } from 'vue-smooth-dnd';
                 <span>CARE</span>
               </v-card-title>
             </v-col>
-          <v-col>
-            <v-card-subtitle>
-              <div>
-
-              <p>
-                Somos una empresa dedicada a pensar y cuidar de los demás facilitando de manera sencilla herramientas con las que poder aprender, fortalecer nuestras mentes y sobretodo pasarlo bien.
-                <br>
-              </p>
-                <p>Nos distinguimos del resto por ser:</p>
-                <ul>
-                  <li>Los putos amos</li>
-                  <li>Los putos amos</li>
-                  <li>Los putos amos</li>
-                  <li>Los putos amos</li>
-                </ul>
-              </div>
-            </v-card-subtitle>
-          </v-col>
+            <v-col>
+              <v-card-subtitle>
+                <div>
+                  <p>
+                    Somos una empresa dedicada a pensar y cuidar de los demás
+                    facilitando de manera sencilla herramientas con las que
+                    poder aprender, fortalecer nuestras mentes y sobretodo
+                    pasarlo bien.
+                    <br />
+                  </p>
+                  <p>Nos distinguimos del resto por ser:</p>
+                  <ul>
+                    <li>Los putos amos</li>
+                    <li>Los putos amos</li>
+                    <li>Los putos amos</li>
+                    <li>Los putos amos</li>
+                  </ul>
+                </div>
+              </v-card-subtitle>
+            </v-col>
           </v-row>
         </v-card>
       </v-col>
@@ -96,4 +98,4 @@ span {
 p {
   font-size: 20px;
 }
-</style>  
+</style>

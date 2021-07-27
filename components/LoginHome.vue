@@ -32,7 +32,6 @@
             @keydown.enter="userLogin"
           />
         </v-form>
-
       </v-card-text>
 
       <div class="text-center mt-3 pb-10">
@@ -81,7 +80,7 @@ export default {
         // CONTROL ERROR HERE
         this.snackbar = true
       }
-    }
+    },
   },
 }
 </script>

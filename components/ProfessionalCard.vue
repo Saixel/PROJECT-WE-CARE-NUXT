@@ -9,7 +9,7 @@
     <div>
       <v-list-item three-line>
         <v-list-item-content>
-          <v-list-item-title  class="text-h5 mb-1">
+          <v-list-item-title class="text-h5 mb-1">
             {{ professional.name }}
           </v-list-item-title>
           <v-list-item-subtitle>
@@ -38,7 +38,10 @@
 <script>
 export default {
   props: {
-    professional: Object,
+    professional: {
+      type: Object,
+      default: null,
+    },
   },
 }
 </script>

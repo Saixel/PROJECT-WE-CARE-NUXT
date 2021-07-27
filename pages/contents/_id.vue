@@ -3,19 +3,21 @@
     <v-row class="d-flex justify-center">
       <v-col xs="12" sm="9">
         <v-card class="overflow-y-auto" height="460">
-          <v-card-title style="background: #f0f8ff"
-            ><strong>{{ content.title }}</strong></v-card-title
-          >
+          <v-card-title style="background: #f0f8ff">
+            <strong>
+              {{ content.title }}
+            </strong>
+          </v-card-title>
           <v-divider></v-divider>
           <v-card-text>
             <div class="text--primary">
               {{ content.description }}
             </div>
           </v-card-text>
-          <v-card-text
-            >Espacio reservado para contenido adicional e indicaciones del
-            profesional.</v-card-text
-          >
+          <v-card-text>
+            Espacio reservado para contenido adicional e indicaciones del
+            profesional.
+          </v-card-text>
         </v-card>
       </v-col>
 
@@ -28,11 +30,8 @@
 
           <v-card-text class="mt-n4">
             <h4 class="text-decoration-underline">
-              <strong>Este curso incluye:</strong>
+              <strong>Este curso incluye {{ content.content.length }} ejercicios</strong>
             </h4>
-            <ul>
-              <li>9 Ejercicios</li>
-            </ul>
           </v-card-text>
 
           <v-divider class="mx-4"></v-divider>
@@ -40,10 +39,12 @@
             <v-row>
               <v-col class="d-flex justify-space-around">
                 <h2>
-                  <v-chip v-if="content.cost" color="#eee">
-                    {{ content.cost | currency }}
-                  </v-chip>
-                  <v-chip v-else color="#eee">
+                  <v-chip v-if="content.cost"> {{ content.cost }} € </v-chip>
+                  <v-chip
+                    v-else
+                    :color="content.price == 'free' ? 'green' : 'blue'"
+                    text-color="white"
+                  >
                     {{ content.price.toUpperCase() }}
                   </v-chip>
                 </h2>
@@ -53,6 +54,9 @@
                   @click="initPayment"
                   >Comprar</v-btn
                 >
+                <v-btn v-else color="primary" disabled @click="initPayment">
+                  Comprar
+                </v-btn>
               </v-col>
             </v-row>
           </v-container>
@@ -63,7 +67,7 @@
     <v-row class="d-flex justify-center">
       <v-col cols="12">
         <v-sheet>
-          <v-expansion-panels>
+          <v-expansion-panels disabled>
             <v-expansion-panel
               v-for="(item, i) in content.content.length"
               :key="i"
@@ -146,8 +150,9 @@ export default {
           // console.log('THIS ---->', this)
           // const loadingComponent = this.$loading.open()
 
-          this.$axios.$post('/payments', payload)
-            .then(response => {
+          this.$axios
+            .$post('/payments', payload)
+            .then((response) => {
               // loadingComponent.close()
             })
             .catch((error) => {
@@ -175,7 +180,7 @@ export default {
 }
 </script>
 
-<style >
+<style>
 .v-chip {
   pointer-events: none !important;
 }
