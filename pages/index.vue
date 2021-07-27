@@ -1,7 +1,7 @@
 import { Container } from 'vue-smooth-dnd';
 <template>
   <v-container>
-    <v-row>
+    <!-- <v-row>
       <v-col>
         <div
           class="d-flex justify-center align-center"
@@ -14,10 +14,10 @@ import { Container } from 'vue-smooth-dnd';
           </h1>
         </div>
       </v-col>
-    </v-row>
+    </v-row> -->
 
-    <v-row v-if="!$auth.loggedIn">
-      <v-col sm="12" md="6">
+    <v-row v-if="!$auth.loggedIn" class="mb-5">
+      <v-col sm="12" md="5">
         <div class="circle-right"></div>
         <v-card height="400" class="elevation-12">
           <v-row>
@@ -52,18 +52,57 @@ import { Container } from 'vue-smooth-dnd';
           </v-row>
         </v-card>
       </v-col>
-      <v-col sm="12" md="6">
+      <v-col sm="12" md="7">
         <v-card class="elevation-12">
-          <v-window>
-            <v-window-item>
+          <!-- <v-window> -->
+            <!-- <v-window-item> -->
               <LoginHome />
-            </v-window-item>
-          </v-window>
+            <!-- </v-window-item> -->
+          <!-- </v-window> -->
         </v-card>
+      </v-col>
+    </v-row>
+
+    <v-container v-if="contents">
+      <h1 class="text-center mb-5">CONTENIDOS DESTACADOS</h1>
+      <CarouselContent :contents="contents" />
+    </v-container>
+
+    <v-container v-if="professionals">
+      <h1 class="text-center mb-5">EDUCADORES DESTACADOS</h1>
+    <CarouselProfessional :professionals="professionals" />
+    </v-container>
+
+    <h1 class="text-center mt-5 mb-5">MIS CONTENIDOS</h1>
+    <v-row v-if="contents">
+      <v-col
+        v-for="(content, idx) in contents"
+        :key="idx"
+        xs="12"
+        sm="12"
+        md="6"
+        lg="4"
+        xl="3"
+      >
+        <ContentCard :content="content" height="300" class="elevation-5" />
       </v-col>
     </v-row>
   </v-container>
 </template>
+
+<script>
+export default {
+  async asyncData({ $axios }) {
+    const contents = await $axios.$get('/content')
+    const professionals = await $axios.$get('/users/professionals')
+    return {
+      contents,
+      professionals,
+    }
+  }
+}
+</script>
+
 <style scoped>
 span {
   font-size: 152px;

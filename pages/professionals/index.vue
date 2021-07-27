@@ -1,12 +1,13 @@
 <template>
   <v-container v-if="professionals">
-    <CarouselProfessional :items="topProfessionals" />
+    <h1 class="text-center mb-5">EDUCADORES DESTACADOS</h1>
+    <CarouselProfessional :professionals="professionals" />
+    <h1 class="text-center mt-10 mb-5">TODOS LOS EDUCADORES</h1>
     <v-row>
       <v-col
         v-for="(professional, idx) in professionals"
         :key="idx"
         xs="12"
-        sm="12"
         md="6"
         lg="4"
         xl="3"
@@ -25,11 +26,6 @@ export default {
     return {
       professionals,
     }
-  },
-  computed: {
-    topProfessionals() {
-      return this.professionals.slice(0, 7)
-    },
-  },
+  }
 }
 </script>

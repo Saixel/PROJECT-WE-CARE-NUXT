@@ -1,8 +1,8 @@
 <template>
   <v-card
-    class="mx-1 rounded-md elevation-2 card-outter"
-    max-width="355"
-    height="200"
+    class="mx-auto rounded-md elevation-2 card-outter"
+    max-width="350"
+    height="180"
     outlined
     style="border: 1px solid black"
   >

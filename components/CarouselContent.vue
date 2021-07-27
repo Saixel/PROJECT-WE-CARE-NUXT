@@ -9,7 +9,7 @@
           active-class="success"
           show-arrows
         >
-          <v-slide-item v-for="(item, idx) in items" :key="idx">
+          <v-slide-item v-for="(item, idx) in contents" :key="idx">
             <ContentCarouselCard :content="item" />
           </v-slide-item>
         </v-slide-group>
@@ -21,7 +21,7 @@
 <script>
 export default {
   props: {
-    items: {
+    contents: {
       type: Array,
       default: null,
     },
