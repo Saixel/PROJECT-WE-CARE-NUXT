@@ -2,25 +2,25 @@
   <v-container v-if="content">
     <v-row style="background-color: white" class="elevation-4 px-4 rounded-lg">
       <v-col style=" height: 85vh; text-align: center">
-        <h1 class="text-decoration-underline">{{content.content[currActIdx].title}}</h1>
-        <h4>{{content.content[currActIdx].description}}</h4>
-        <h4>{{content.content[currActIdx].instructions}}</h4>
+        <h1 class="text-decoration-underline">{{activities[currActIdx].activity.title}}</h1>
+        <h4>{{activities[currActIdx].activity.description}}</h4>
+        <h4>{{activities[currActIdx].activity.instructions}}</h4>
         <v-divider class="my-5"></v-divider>
-        <div class="d-flex flex-column align-center">          
-          <!-- <div> -->
-            <Container @drop="onDrop" orientation="horizontal" lock-axis="x">
-              <Draggable v-for="item in items" :key="item.id">
-                <v-chip label color="purple lighten-2" class="mx-3 draggable-item">{{item.data}}</v-chip>
-              </Draggable>
-            </Container>
-          <!-- </div> -->
+        <div class="d-flex flex-column align-center">
+          <Container @drop="onDrop" orientation="horizontal" lock-axis="x">
+            <Draggable v-for="item in items" :key="item.id">
+              <v-chip label style="font-size: 2em;" color="purple"
+                class="py-6 mx-1 draggable-item white--text">{{item.data}}</v-chip>
+            </Draggable>
+          </Container>
         </div>
-        <div><v-btn color="success" class="my-10" @click="validateAnswer">Comprobar</v-btn></div>
-        <span class="red--text" v-if="wrongAnswer">Respuesta incorrecta</span>
+        <div><v-btn style="font-size: 1.2em" color="success" class="my-10 py-4" @click="validateAnswer">Comprobar</v-btn></div>
+        <span style="font-size: 2em" class="red--text" v-if="wrongAnswer">Respuesta incorrecta</span>
         <!-- {{activities}}
         {{items}} -->
+        <!-- {{content}} -->
       </v-col>
-      <v-col cols="3" class="elevation-4" style="overflow: scroll; height: 85vh">
+      <v-col cols="3" class="elevation-4 scroller" style="overflow: scroll; height: 85vh">
         <h3 style="text-align: center">Actividades</h3>
         <v-btn text v-for="(act, i) in content.content" class="my-1" @click="switchActivity(i)" :key="`content${i}`"><v-icon v-if="activities[i].done">mdi-checkbox-marked-circle</v-icon>{{act.title}}</v-btn>
         <v-btn text plain v-for="(act, i) in 20" :key="`overflow${i}`">TESTING OVERFLOW Nº{{i}}</v-btn>
@@ -237,9 +237,8 @@ export default {
 </script>
 
 <style scoped>
-  .scroller::-webkit-scrollbar-track {
-    background-color: lightgray;
-    border-radius: 20px;
+  v-chip {
+    font-size: 10em;
   }
   .scroller::-webkit-scrollbar-thumb {
     background: #b3b3b3;
@@ -251,5 +250,11 @@ export default {
   }
   .scroller::-webkit-scrollbar-thumb:hover {
     background: #808080;
+  }
+  .draggable-item {
+    cursor: grab;
+  }
+  .draggable-item:active {
+    cursor: grabbing;
   }
 </style>
