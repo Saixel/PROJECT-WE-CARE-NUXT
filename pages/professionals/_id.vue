@@ -74,7 +74,7 @@
         </v-sheet>
       </v-col> -->
       <!-- <hr style="width: 100%" class="mt-5"> -->
-    </v-row>
+    </v-row>    
     <v-row class="mt-10">
       <v-col cols="12"><h1 style="color: white; text-shadow: 2px 3px 5px black" class="d-flex justify-center">Paquetes hechos por&nbsp; <span class="blue--text text--lighten-3">{{professional.name}}</span></h1></v-col>
       <v-col v-for="(content, idx) in contents" :key="idx" sm="6" lg="4">
@@ -100,7 +100,7 @@ export default {
   data() {
     return {
       expand: false,
-      collectives: ['LOOK WHO', 'WE GOT HERE', 'IF IT', 'ISN\'T MR', 'COLLECTIVES', 'HIMSELF!','WHAT BRINGS','SUCH A','HANDSOME FELLA','AS YOURSELF', 'TO THIS TOWN']
+      collectives: ['TEST COLLECTIVE 1', 'TEST COLLECTIVE 2', 'TEST COLLECTIVE 3', 'TEST COLLECTIVE 4', 'TEST COLLECTIVE 5']
     }
   }
 }

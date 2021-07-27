@@ -6,13 +6,24 @@
         <h4>{{content.content[currActIdx].description}}</h4>
         <h4>{{content.content[currActIdx].instructions}}</h4>
         <v-divider class="my-5"></v-divider>
-        <div><v-chip v-for="(word, i) in split" :key="i" color="purple lighten-2" class="mx-3">{{word}}</v-chip></div>
-        <v-btn color="success" class="my-10" @click="content.content[currActIdx].done = true; if(currActIdx < content.content.length - 1){currActIdx++}">Comprobar</v-btn>
+        <div class="d-flex flex-column align-center">          
+          <!-- <div> -->
+            <Container @drop="onDrop" orientation="horizontal" lock-axis="x">
+              <Draggable v-for="item in items" :key="item.id">
+                <v-chip label color="purple lighten-2" class="mx-3 draggable-item">{{item.data}}</v-chip>
+              </Draggable>
+            </Container>
+          <!-- </div> -->
+        </div>
+        <div><v-btn color="success" class="my-10" @click="validateAnswer">Comprobar</v-btn></div>
+        <span class="red--text" v-if="wrongAnswer">Respuesta incorrecta</span>
+        <!-- {{activities}}
+        {{items}} -->
       </v-col>
       <v-col cols="3" class="elevation-4" style="overflow: scroll; height: 85vh">
         <h3 style="text-align: center">Actividades</h3>
-        <v-btn text v-for="(act, i) in content.content" class="my-1" @click="currActIdx = i" :key="i"><v-icon v-if="content.content[i].done">mdi-checkbox-marked-circle</v-icon>{{act.title}}</v-btn>
-        <v-btn text plain v-for="(act, i) in 20" :key="i">TESTING OVERFLOW Nº{{i}}</v-btn>
+        <v-btn text v-for="(act, i) in content.content" class="my-1" @click="switchActivity(i)" :key="`content${i}`"><v-icon v-if="activities[i].done">mdi-checkbox-marked-circle</v-icon>{{act.title}}</v-btn>
+        <v-btn text plain v-for="(act, i) in 20" :key="`overflow${i}`">TESTING OVERFLOW Nº{{i}}</v-btn>
       </v-col>
       <!-- <v-col class="pa-10" cols="1">
         <v-tooltip bottom>
@@ -153,25 +164,74 @@
 </template>
 
 <script>
+import { Container, Draggable } from "vue-smooth-dnd";
 export default {
+  components: { Container, Draggable },
   async asyncData({ $axios, params }) {
-    return { content: await $axios.$get(`/content/${params.id}`) }
+    const content = await $axios.$get(`/content/${params.id}`)
+    const activities = await $axios.$get(`/content/${params.id}/activities`)
+    return { content, activities }
   },
   data: () => ({
     drawer: false,
     group: null,
     e6: 1,
     currActIdx: 0,
+    items: [],
+    split: ['Paca', 'la', 'alpaca', 'es', 'muy', 'flaca'],
+    wrongAnswer: false
   }),
   watch: {
     group () {
       this.drawer = false
     },
-  },  
-  computed: {
-    split() {
-      return this.content.content[this.currActIdx].phrase.split(' ')
+  },
+   methods: {
+    switchActivity(actNum) {
+      this.currActIdx = actNum
+      this.items = this.generateItems(this.activities[this.currActIdx].pieces.length, i => ({ id: `id${i}`, data: this.activities[this.currActIdx].pieces[i]}))
+    },
+    validateAnswer() {
+      let match = true
+      if(this.activities[this.currActIdx].activity.phrase.split(' ').forEach((word, i) => {if(word !== this.items[i].data){console.log('HELP THERES AN ERROR IN HERE'); this.wrongAnswer = true; match = false }}))
+      console.log(match)
+      if(match) {
+        this.wrongAnswer = false
+        this.activities[this.currActIdx].done = true;
+        if(this.currActIdx < this.content.content.length - 1){this.currActIdx++}
+        this.items = this.generateItems(this.activities[this.currActIdx].pieces.length, i => ({ id: `id${i}`, data: this.activities[this.currActIdx].pieces[i]}))
+      }
+    },
+    onDrop(dropResult) {
+      this.items = this.applyDrag(this.items, dropResult);
+    },
+    applyDrag(arr, dragResult) {
+      const { removedIndex, addedIndex, payload } = dragResult
+      if (removedIndex === null && addedIndex === null) return arr
+
+      const result = [...arr]
+      let itemToAdd = payload
+
+      if (removedIndex !== null) {
+        itemToAdd = result.splice(removedIndex, 1)[0]
+      }
+
+      if (addedIndex !== null) {
+        result.splice(addedIndex, 0, itemToAdd)
+      }
+
+      return result
+    },
+    generateItems(count, creator) {
+      const result = []
+      for (let i = 0; i < count; i++) {
+        result.push(creator(i))
+      }
+      return result
     }
+  },
+  created() {
+    this.items = this.generateItems(this.activities[this.currActIdx].pieces.length, i => ({ id: `id${i}`, data: this.activities[this.currActIdx].pieces[i]}))
   }
 }
 </script>
