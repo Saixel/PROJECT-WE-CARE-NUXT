@@ -36,6 +36,9 @@
           <nuxt-link :to="{ path: '/profiles' }">
             <v-list-item text rounded class="my-1"> PERFIL </v-list-item>
           </nuxt-link>
+          <nuxt-link :to="{ path: '/' }">
+            <v-list-item text rounded class="my-1"> MIS CONTENIDOS </v-list-item>
+          </nuxt-link>
           <v-divider />
           <v-list-item text rounded class="my-1" @click="logout">
             DESCONECTAR

@@ -1,7 +1,6 @@
 <template>
   <v-row>
     <v-col>
-      <h1 class="ml-5">-Paquetes destacados-</h1>
       <v-sheet cols="12" rounded="lg" class="mx-auto" elevation="8">
         <v-slide-group
           v-model="model"
@@ -9,7 +8,7 @@
           active-class="success"
           show-arrows
         >
-          <v-slide-item v-for="(item, idx) in items" :key="idx">
+          <v-slide-item v-for="(item, idx) in contents" :key="idx">
             <ContentCarouselCard :content="item" />
           </v-slide-item>
         </v-slide-group>
@@ -20,7 +19,7 @@
 <script>
 export default {
   props: {
-    items: {
+    contents: {
       type: Array,
       default: null,
     },

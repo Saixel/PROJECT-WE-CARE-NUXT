@@ -1,8 +1,9 @@
 <template>
   <v-card
     :loading="loading"
-    class="mx-auto mt-6 rounded-md card-outter"
+    class="mx-auto rounded-md elevation-2 card-outter"
     max-width="450"
+    outlined
     style="border: 1px solid black"
   >
     <v-card-title style="background: #e1effc"
@@ -53,11 +54,6 @@
         <v-list-item class="d-flex" style="background: #f0f8ff">
           <v-list-item-content class="align-self-start pt-4">
             <h2>{{ content.author.name }}</h2>
-            <!-- <h4 class="grey--text">-Luchar es el primer paso al triunfo-</h4> -->
-            <!--VVV mostrar los colevtivos en los que se especializa el autor del paquete VVV-->
-            <!-- <div class="mt-2" v-if="content.author.collective.length >= 1">
-              <v-chip color="blue lighten-3" :v-for="(collective, i) in content.author.collective" :key="i">{{collective}}</v-chip>
-            </div> -->
           </v-list-item-content>
 
           <v-list-item-avatar tile size="80">

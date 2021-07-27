@@ -1,12 +1,20 @@
 <template>
   <v-container v-if="contents">
-    <CarouselContent :items="topContents" />
+    <!-- <v-col xs="12" md="6" lg="2" xl="2">
+      <SearchAside />
+    </v-col> -->
+    <v-col>
+    <h1 class="text-center mb-5">CONTENIDOS DESTACADOS</h1>
+    <CarouselContent :contents="topContents" />
+    </v-col>
+    <h1 class="text-center mt-10 mb-5">
+      {{ contents.length }} PAQUETES DE EJERCICIOS DISPONIBLES
+    </h1>
     <v-row>
       <v-col
         v-for="(content, idx) in contents"
         :key="idx"
         xs="12"
-        sm="12"
         md="6"
         lg="4"
         xl="3"
