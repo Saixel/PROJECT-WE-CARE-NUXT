@@ -1,6 +1,7 @@
 <template>
   <v-row>
     <v-col>
+      <h1 class="ml-5">-Paquetes destacados-</h1>
       <v-sheet cols="12" rounded="lg" class="mx-auto" elevation="8" >
         <v-slide-group
           v-model="model"

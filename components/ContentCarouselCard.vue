@@ -26,7 +26,7 @@
       </div>
 
       <v-row>
-        <v-col color="orange" class="d-flex justify-end mr-3">
+        <v-col class="d-flex justify-end mr-3">
           <span>Count: 5</span>
           <v-icon dense color="red lighten-2"> mdi-heart </v-icon>
         </v-col>

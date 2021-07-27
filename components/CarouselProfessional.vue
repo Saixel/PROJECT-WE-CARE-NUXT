@@ -1,7 +1,8 @@
 <template>
   <v-row>
     <v-col>
-      <v-sheet cols="12" rounded="lg" class="mx-auto" elevation="8" max-width="1200">
+      <h1 class="ml-5">-Educadores destacados-</h1>
+      <v-sheet cols="12" rounded="lg" class="mx-auto" elevation="8">
         <v-slide-group
           v-model="model"
           class="py-2 px-4"
