@@ -1,8 +1,8 @@
 <template>
   <v-container v-if="professionals">
-    <h1 class="text-center mb-5">EDUCADORES DESTACADOS</h1>
+    <h1 class="text-center mb-5 title-style">EDUCADORES DESTACADOS</h1>
     <CarouselProfessional :professionals="professionals" />
-    <h1 class="text-center mt-10 mb-5">TODOS LOS EDUCADORES</h1>
+    <h1 class="text-center mt-10 mb-5 title-style">TODOS LOS EDUCADORES</h1>
     <v-row>
       <v-col
         v-for="(professional, idx) in professionals"
@@ -29,3 +29,10 @@ export default {
   }
 }
 </script>
+<style scoped>
+.title-style {
+  color: white;
+  text-shadow: 3px 2px 4px black;
+  -webkit-text-stroke: 1px black;
+}
+</style>

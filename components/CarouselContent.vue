@@ -1,8 +1,8 @@
 <template>
   <v-row>
     <v-col>
-      <!-- <h1 class="ml-5" style="color: white; text-shadow: 3px 2px 1px black;  -webkit-text-stroke: 1px black;">-Contenidos destacados-</h1> -->
-      <v-sheet cols="12" rounded="lg" class="mx-auto" elevation="8" >
+      
+      <v-sheet cols="12" rounded="lg" class="mx-auto" elevation="8">
         <v-slide-group
           v-model="model"
           class="py-2 px-4"
