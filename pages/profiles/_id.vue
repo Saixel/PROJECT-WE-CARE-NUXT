@@ -6,7 +6,7 @@
       <h4>{{ content.description }}</h4>
       <h4>{{ content.instructions }}</h4>
     </v-row> -->
-    <v-card style="background-color: white; max-height: 70vh" class="elevation-4 px-0 rounded-lg">
+    <v-card style="background-color: white; max-height: 70vh; overflow: hidden" class="elevation-4 px-0 rounded-lg">
       <v-container v-if="content">
         <v-row >
           <v-card-title style="background-color: lightblue" class="pa-8 rounded-lg">
@@ -50,9 +50,9 @@
             <v-col
               cols="3"
               class="elevation-4 scroller"
-              style="overflow: auto; height: 85vh; max-height: 70vh"
+              style="overflow: auto; max-height: 50vh"
             >
-              <h3 style="text-align: center">ÍNDICE DE ACTIVIDADES</h3>
+              <h3 style="text-align: center" class="mb-3">ÍNDICE DE ACTIVIDADES</h3>
               <v-btn
                 v-for="(act, i) in content.content"
                 :key="`content${i}`"
@@ -62,11 +62,11 @@
                 ><v-icon v-if="activities[i].done">mdi-checkbox-marked-circle</v-icon
                 >{{ act.title }}</v-btn
               >
+              <!-- <v-btn v-for="(act, i) in 20" :key="`overflow${i}`" text plain>
+                TESTING OVERFLOW Nº{{ i }}
+              </v-btn> -->
             </v-col>  
 
-          <!-- <v-btn v-for="(act, i) in 20" :key="`overflow${i}`" text plain>
-            TESTING OVERFLOW Nº{{ i }}
-          </v-btn> -->
         </v-row>
       </v-container>
     </v-card>
@@ -147,30 +147,29 @@ export default {
     },
     validateAnswer() {
       let match = true
-      if (
-        this.activities[this.currActIdx].activity.phrase
-          .split(' ')
-          .forEach((word, i) => {
-            if (word !== this.items[i].data) {
-              this.wrongAnswer = true
-              match = false
-            }
-          })
-      )
-        if (match) {
-          this.wrongAnswer = false
-          this.activities[this.currActIdx].done = true
-          if (this.currActIdx < this.content.content.length - 1) {
-            this.currActIdx++
+      this.activities[this.currActIdx].activity.phrase
+        .split(' ')
+        .forEach((word, i) => {
+          if (word !== this.items[i].data) {
+            this.wrongAnswer = true
+            match = false
           }
-          this.items = this.generateItems(
-            this.activities[this.currActIdx].pieces.length,
-            (i) => ({
-              id: `id${i}`,
-              data: this.activities[this.currActIdx].pieces[i],
-            })
-          )
+        })
+      console.log(match)
+      if (match) {
+        this.wrongAnswer = false
+        this.activities[this.currActIdx].done = true
+        if (this.currActIdx < this.content.content.length - 1) {
+          this.currActIdx++
         }
+        this.items = this.generateItems(
+          this.activities[this.currActIdx].pieces.length,
+          (i) => ({
+            id: `id${i}`,
+            data: this.activities[this.currActIdx].pieces[i],
+          })
+        )
+      }
     },
     onDrop(dropResult) {
       this.items = this.applyDrag(this.items, dropResult)
