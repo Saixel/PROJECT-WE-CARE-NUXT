@@ -50,7 +50,9 @@
       </v-card-text>
 
       <div class="text-center pb-8">
+        <nuxt-link :to="{ name: 'login', params: { step: 2 } }">
         <v-btn rounded outlined dark>registrarse</v-btn>
+        </nuxt-link>
       </div>
     </v-col>
 

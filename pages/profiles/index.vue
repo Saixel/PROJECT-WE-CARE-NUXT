@@ -66,6 +66,7 @@
 //   }
 // }
 export default {
+  middleware: ['auth', 'role'],
   async asyncData({ $axios }) {
     return { contents: await $axios.$get('/content') }
   },
@@ -77,7 +78,3 @@ export default {
   overflow: auto;
 }
 </style>
-
-
-
-

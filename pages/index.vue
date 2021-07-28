@@ -73,6 +73,7 @@ import { Container } from 'vue-smooth-dnd';
     <CarouselProfessional :professionals="professionals" />
     </v-container>
 
+  <v-container v-if="$auth.loggedIn">
     <h1 class="text-center mt-5 mb-5">MIS CONTENIDOS</h1>
     <v-row v-if="contents">
       <v-col
@@ -84,9 +85,11 @@ import { Container } from 'vue-smooth-dnd';
         lg="4"
         xl="3"
       >
-        <ContentCard :content="content" height="300" class="elevation-5" />
+        <ContentCardOwn :content="content" height="300" class="elevation-5" />
       </v-col>
     </v-row>
+  </v-container>
+
   </v-container>
 </template>
 

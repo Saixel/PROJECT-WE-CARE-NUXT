@@ -48,11 +48,11 @@
     </div>
 
     <div v-else-if="!$auth.loggedIn && $route.name !== 'login'">
-      <nuxt-link :to="{ name: 'login', params: { step: 1 } }">
+      <!-- <nuxt-link :to="{ name: 'login', params: { step: 1 } }">
         <v-btn color="white" text rounded class="my-2">
           <strong>iniciar sesión</strong>
         </v-btn>
-      </nuxt-link>
+      </nuxt-link> -->
 
       <nuxt-link :to="{ name: 'login', params: { step: 2 } }">
         <v-btn color="primary" rounded class="my-2">
@@ -73,7 +73,7 @@ export default {
       // },
       {
         name: 'noticias',
-        path: '/news',
+        path: '/',
       },
       {
         name: 'contenidos',
