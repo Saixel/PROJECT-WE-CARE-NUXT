@@ -7,25 +7,27 @@
       <h4>{{ content.instructions }}</h4>
     </v-row> -->
   <v-card
-    style="background-color: white; max-height: 70vh; overflow: hidden"
+    style="background-color: white; max-height: 70vh; overflow: hidden;"
     class="elevation-4 px-0 rounded-lg"
   >
     <v-container v-if="content">
-      <v-row style="background-color: lightblue" class="pa-8 rounded-lg">
+      <v-row style="background: #e1effc" class="pa-8">
         <v-card-title>
           <h1>
-            {{ content.title }}
+            <v-icon large color="black">mdi-format-list-checks</v-icon> {{ content.title }}
           </h1>
           <!-- <h4>{{ content.description }}</h4> -->
         </v-card-title>
       </v-row>
       <v-row>
-        <v-col style="height: 85vh; text-align: center">
-          <h1>
-            {{ activities[currActIdx].activity.title }}
-          </h1>
-          <h4>{{ activities[currActIdx].activity.description }}</h4>
-          <h4>{{ activities[currActIdx].activity.instructions }}</h4>
+        <v-col style="height: 85vh;">
+          <div class="ps-8">
+            <h1>
+              {{ activities[currActIdx].activity.title }}
+            </h1>
+            <h4>{{ activities[currActIdx].activity.description }}</h4>
+            <h4>{{ activities[currActIdx].activity.instructions }}</h4>
+          </div>
           <v-divider class="my-5"></v-divider>
           <div class="d-flex flex-column align-center">
             <Container orientation="horizontal" lock-axis="x" @drop="onDrop">
@@ -40,7 +42,7 @@
               </Draggable>
             </Container>
           </div>
-          <div>
+          <div style="text-align: center">
             <v-btn color="success" class="my-10 py-4" @click="validateAnswer">
               Comprobar
             </v-btn>
@@ -54,10 +56,12 @@
         </v-col>
         <v-col
           cols="3"
-          class="elevation-4 scroller"
-          style="overflow: auto;  max-height: 70vh"
+          class="scroller"
+          style="overflow: auto;  max-height: 70vh; box-shadow: 0 3px 7px -1px gray;"
         >
-          <h3 style="text-align: center" class="mb-3">ÍNDICE DE ACTIVIDADES</h3>
+          <h3 style="text-align: center" class="mb-3"> 
+                <v-icon color="black">mdi-format-list-bulleted</v-icon> ÍNDICE DE ACTIVIDADES
+          </h3>
           <v-btn
             v-for="(act, i) in content.content"
             :key="`content${i}`"
