@@ -1,6 +1,6 @@
 import { Container } from 'vue-smooth-dnd';
 <template>
-  <v-container class="mt-6">
+  <v-container class="mt-12">
     <!-- <v-row>
       <v-col>
         <div
@@ -91,17 +91,17 @@ import { Container } from 'vue-smooth-dnd';
       </v-col>
     </v-row>
 
-    <v-container v-if="contents">
-      <h1 class="text-center mb-5 title-style">CONTENIDOS DESTACADOS</h1>
-      <CarouselContent :contents="contents" />
-    </v-container>
-
-    <v-container v-if="professionals">
-      <h1 class="text-center mb-5 title-style">EDUCADORES DESTACADOS</h1>
-      <CarouselProfessional :professionals="professionals" />
-    </v-container>
-
     <v-container v-if="$auth.loggedIn">
+      <v-container v-if="contents">
+        <h1 class="text-center mb-5 title-style">CONTENIDOS DESTACADOS</h1>
+        <CarouselContent :contents="contents" />
+      </v-container>
+
+      <v-container v-if="professionals">
+        <h1 class="text-center mb-5 title-style">PROFESIONALES DESTACADOS</h1>
+        <CarouselProfessional :professionals="professionals" />
+      </v-container>
+
       <h1 class="text-center mt-5 mb-5 title-style">MIS CONTENIDOS</h1>
       <v-row v-if="contents">
         <v-col

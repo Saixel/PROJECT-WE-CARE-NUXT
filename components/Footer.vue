@@ -32,11 +32,11 @@ export default {
       },
       {
         name: 'equipo',
-        path: '/team',
+        path: '/',
       },
       {
         name: 'proyecto',
-        path: '/project',
+        path: '/',
       },
       {
         name: 'Contacto',

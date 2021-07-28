@@ -1,8 +1,8 @@
 <template>
   <v-container v-if="professionals">
-    <h1 class="text-center mb-5 title-style">EDUCADORES DESTACADOS</h1>
+    <h1 class="text-center mb-5 title-style">PROFESIONALES DESTACADOS</h1>
     <CarouselProfessional :professionals="professionals" />
-    <h1 class="text-center mt-10 mb-5 title-style">TODOS LOS EDUCADORES</h1>
+    <h1 class="text-center mt-10 mb-5 title-style">TODOS LOS PROFESIONALES</h1>
     <v-row>
       <v-col
         v-for="(professional, idx) in professionals"

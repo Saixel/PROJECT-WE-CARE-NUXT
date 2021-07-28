@@ -59,7 +59,7 @@
           class="scroller"
           style="overflow: auto;  max-height: 70vh; box-shadow: 0 3px 7px -1px gray;"
         >
-          <h3 style="text-align: center" class="mb-3"> 
+          <h3 style="text-align: center" class="mb-3">
                 <v-icon color="black">mdi-format-list-bulleted</v-icon> ÍNDICE DE ACTIVIDADES
           </h3>
           <v-btn
@@ -164,7 +164,6 @@ export default {
             match = false
           }
         })
-      console.log(match)
       if (match) {
         this.wrongAnswer = false
         this.activities[this.currActIdx].done = true

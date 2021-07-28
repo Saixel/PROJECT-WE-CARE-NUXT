@@ -2,43 +2,58 @@
   <v-container v-if="content" class="mx-0" fluid>
     <v-row class="d-flex justify-center">
       <v-col xs="12" sm="9">
-        <v-card class="overflow-y-auto" height="460">
+        <v-card class="overflow-y-auto" height="350">
           <v-card-title style="background: #f0f8ff">
             <strong>
-              {{ content.title }}
+              {{ content.title }}<strong v-if="content.cost"> - {{ content.cost }}€</strong>
             </strong>
+            <v-spacer></v-spacer>
+            <v-chip
+              v-if="content.price == 'free'"
+              :color="content.price == 'free' ? 'green' : 'blue'"
+              text-color="white"
+              class="mr-2"
+            >
+              <h2>{{ content.price.toUpperCase() }}</h2>
+            </v-chip>
+            <v-btn v-if="$auth.loggedIn" color="primary" @click="initPayment"
+              >Comprar</v-btn
+            >
+            <v-btn v-else color="primary" disabled @click="initPayment">
+              Comprar
+            </v-btn>
           </v-card-title>
           <v-divider></v-divider>
           <v-card-text>
             <div class="text--primary">
-              {{ content.description }}
+              {{ content.description }} Este curso incluye {{ content.content.length }} ejercicios.
             </div>
           </v-card-text>
-          <v-card-text>
+          <!-- <v-card-text>
             Espacio reservado para contenido adicional e indicaciones del
             profesional.
-          </v-card-text>
+          </v-card-text> -->
         </v-card>
       </v-col>
 
       <v-col xs="12" sm="9" lg="3">
-        <v-card height="460">
-          <v-img class="cursor" height="280" src="/alexprofile1.jpg"></v-img>
-          <v-card-title class="mt-n2">
-            {{ content.author.name }}
-          </v-card-title>
-
+        <v-card height="350">
+          <v-img class="cursor" height="280" src="/brunoprofile.jpg"></v-img>
+          <v-card-title><h3>{{ content.author.name }}</h3></v-card-title>
+          <!-- <v-divider class="mx-4 mb-3"></v-divider>
           <v-card-text class="mt-n4">
             <h4 class="text-decoration-underline">
-              <strong>Este curso incluye {{ content.content.length }} ejercicios</strong>
+              <strong
+                >Este curso incluye
+                {{ content.content.length }} ejercicios</strong
+              >
             </h4>
-          </v-card-text>
+          </v-card-text> -->
 
-          <v-divider class="mx-4"></v-divider>
           <v-container>
             <v-row>
               <v-col class="d-flex justify-space-around">
-                <h2>
+                <!-- <h2>
                   <v-chip v-if="content.cost"> {{ content.cost }} € </v-chip>
                   <v-chip
                     v-else
@@ -47,8 +62,8 @@
                   >
                     {{ content.price.toUpperCase() }}
                   </v-chip>
-                </h2>
-                <v-btn
+                </h2> -->
+                <!-- <v-btn
                   v-if="$auth.loggedIn"
                   color="primary"
                   @click="initPayment"
@@ -56,7 +71,7 @@
                 >
                 <v-btn v-else color="primary" disabled @click="initPayment">
                   Comprar
-                </v-btn>
+                </v-btn> -->
               </v-col>
             </v-row>
           </v-container>
