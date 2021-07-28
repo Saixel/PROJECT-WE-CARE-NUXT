@@ -34,6 +34,7 @@ export default {
     topContents() {
       // return this.contents.slice(0, 7)
       return this.contents
+      // return this.contents.sort((a, b) => a.score - b.score)
     },
   },
 }
