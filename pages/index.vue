@@ -1,6 +1,6 @@
 import { Container } from 'vue-smooth-dnd';
 <template>
-  <v-container class="mt-6" >
+  <v-container class="mt-6">
     <!-- <v-row>
       <v-col>
         <div
@@ -16,58 +16,71 @@ import { Container } from 'vue-smooth-dnd';
       </v-col>
     </v-row> -->
     <!-- <h1 class="text-center mb-5 title-style">WE CARE</h1> -->
-    <v-row v-if="!$auth.loggedIn" class="mb-5 " style="text-align: center" >
-      <v-col sm="12" md="5">
+    <v-row v-if="!$auth.loggedIn" class="mb-5" style="text-align: center">
+      <!-- <v-col sm="12" md="5">
         <div class="circle-right"></div>
         <v-card
           height="400"
           class="elevation-0"
           style="background-color: transparent"
         >
-          <v-row>
-            <v-col cols="8">
-              <v-card-title class="ml-n6">
-                <span
-                  style="
-                    color: black;
-                    text-shadow: 3px 2px 4px white;
-                    -webkit-text-stroke: 1px white;
-                  "
-                  >WE CARE</span
-                >
-              </v-card-title>
-            </v-col>
-
-            <v-card-subtitle>
-              <div>
-                <p>
-                  Somos una empresa dedicada a pensar y cuidar de los demás
-                  facilitando de manera sencilla herramientas con las que poder
-                  aprender, fortalecer nuestras mentes y sobretodo pasarlo bien.
-                  <br />
-                  <br />
-                  Neib olrasap odoterbos y setnem sartseun recelatrof ,rednerpa
-                  redop euq sal noc satneimarreh allicnes arenam ed odnatilicaf
-                  sámed sol ed radiuc y rasnep a adacided aserpme anu somos.
-                </p>
-                <br>
-                <div >
-                <h2 class="text-decoration-underline">
+          <v-card-title
+            class="ml-n6 d-flex justify-center"
+            style="
+              color: black;
+              text-shadow: 3px 2px 4px white;
+              -webkit-text-stroke: 1px white;
+            "
+            ><h1 class="text-center title1">WE CARE</h1>
+          </v-card-title>
+          <br />
+          <v-card-subtitle>
+            <div>
+              <p>
+                Somos una empresa dedicada a pensar y cuidar de los demás
+                facilitando de manera sencilla herramientas con las que poder
+                aprender, fortalecer nuestras mentes y sobretodo pasarlo bien.
+                <br />
+              </p>
+              <br />
+              <div class="ul-list">
+                <h2 class="text-decoration-underline list-title">
                   Nos distinguimos del resto por ser:
                 </h2>
-                <ul class="pa-0 my-3 mx-4">
-                  <li style="list-style-image: url('')"><h3>Interfaz intuitiva</h3></li>
-                  <li><h3>Los putos amos</h3></li>
-                  <li><h3>putos amos</h3></li>
-                  <li><h3>Los putos amos</h3></li>
-                </ul>
-                </div>
+                <v-container>
+                  <v-row>
+                    <v-col>
+                      <ul class="pa-0 my-3 mx-4">
+                        <li class="d-flex align-center justify-center">
+                          <v-icon>mdi-lock</v-icon>
+                          <h3>Interfaz intuitiva</h3>
+                        </li>
+                        <li class="d-flex align-center justify-center">
+                          <v-icon>mdi-lock</v-icon>
+                          <h3>Interfaz intuitiva</h3>
+                        </li>
+                      </ul>
+                    </v-col>
+                    <v-col>
+                      <ul class="pa-0 my-3 mx-4">
+                        <li class="d-flex align-center justify-center">
+                          <v-icon>mdi-lock</v-icon>
+                          <h3>Interfaz intuitiva</h3>
+                        </li>
+                        <li class="d-flex align-center justify-center">
+                          <v-icon>mdi-lock</v-icon>
+                          <h3>Interfaz intuitiva</h3>
+                        </li>
+                      </ul>
+                    </v-col>
+                  </v-row>
+                </v-container>
               </div>
-            </v-card-subtitle>
-          </v-row>
+            </div>
+          </v-card-subtitle>
         </v-card>
-      </v-col>
-      <v-col sm="12" md="7">
+      </v-col> -->
+      <v-col cols="12">
         <v-card class="elevation-12">
           <!-- <v-window> -->
           <!-- <v-window-item> -->
@@ -88,22 +101,21 @@ import { Container } from 'vue-smooth-dnd';
       <CarouselProfessional :professionals="professionals" />
     </v-container>
 
-  <v-container v-if="$auth.loggedIn">
-    <h1 class="text-center mt-5 mb-5 title-style">MIS CONTENIDOS</h1>
-    <v-row v-if="contents">
-      <v-col
-        v-for="(content, idx) in contents"
-        :key="idx"
-        cols="12"
-        md="6"
-        lg="4"
-        xl="3"
-      >
-        <ContentCardOwn :content="content" height="300" class="elevation-5" />
-      </v-col>
-    </v-row>
-  </v-container>
-
+    <v-container v-if="$auth.loggedIn">
+      <h1 class="text-center mt-5 mb-5 title-style">MIS CONTENIDOS</h1>
+      <v-row v-if="contents">
+        <v-col
+          v-for="(content, idx) in contents"
+          :key="idx"
+          cols="12"
+          md="6"
+          lg="4"
+          xl="3"
+        >
+          <ContentCardOwn :content="content" height="300" class="elevation-5" />
+        </v-col>
+      </v-row>
+    </v-container>
   </v-container>
 </template>
 
@@ -121,7 +133,7 @@ export default {
 </script>
 
 <style scoped>
-span {
+.title1 {
   font-size: 100px;
 }
 .Container {
@@ -141,7 +153,6 @@ span {
   height: 100%;
   background-color: #406585;
   clip-path: circle(400px at right 150px);
-
 }
 .circle-center {
   position: absolute;
@@ -154,13 +165,23 @@ span {
 }
 p {
   font-size: 20px;
+  color: black;
 }
 .title-style {
   color: white;
   text-shadow: 3px 2px 4px black;
   -webkit-text-stroke: 1px black;
 }
+.ul-list {
+  color: black;
+}
+
 li {
   margin-top: 5px;
+  list-style: none;
+}
+
+li > h3 {
+  display: inline-block;
 }
 </style>
