@@ -1,63 +1,76 @@
 <template>
-  <v-container v-if="content">
-    <v-row style="background-color: white" class="elevation-4 px-4 rounded-lg">
-      <v-col style="height: 85vh; text-align: center">
-        <h1 class="text-decoration-underline">
-          {{ content.title }}
-        </h1>
-        <h4>{{ content.description }}</h4>
-        <h4>{{ content.instructions }}</h4>
-        <v-divider class="my-5"></v-divider>
-        <h1 class="text-decoration-underline">
-          {{ activities[currActIdx].activity.title }}
-        </h1>
-        <h4>{{ activities[currActIdx].activity.description }}</h4>
-        <h4>{{ activities[currActIdx].activity.instructions }}</h4>
-        <v-divider class="my-5"></v-divider>
-        <div class="d-flex flex-column align-center">
-          <Container orientation="horizontal" lock-axis="x" @drop="onDrop">
-            <Draggable v-for="item in items" :key="item.id">
-              <v-chip
-                label
-                style="font-size: 2em"
-                color="purple"
-                class="py-6 mx-1 draggable-item white--text"
-                >{{ item.data }}</v-chip
+    <!-- <v-row style="background-color: rgba(0, 0, 0, 0.5); border-radius: 5px" class="pa-5 white--text my-5">
+      <h1 class="text-decoration-underline">
+        {{ content.title }}
+      </h1>
+      <h4>{{ content.description }}</h4>
+      <h4>{{ content.instructions }}</h4>
+    </v-row> -->
+    <v-card style="background-color: white; max-height: 70vh" class="elevation-4 px-0 rounded-lg">
+      <v-container v-if="content">
+        <v-row >
+          <v-card-title style="background-color: lightblue" class="pa-8 rounded-lg">
+            <h1 class="text-decoration-underline">
+              {{ content.title }}
+            </h1>
+            <h4>{{ content.description }}</h4>            
+          </v-card-title>          
+            <v-col style="height: 85vh; text-align: center">              
+              <h1 class="text-decoration-underline">
+                {{ activities[currActIdx].activity.title }}
+              </h1>
+              <h4>{{ activities[currActIdx].activity.description }}</h4>
+              <h4>{{ activities[currActIdx].activity.instructions }}</h4>
+              <v-divider class="my-5"></v-divider>
+              <div class="d-flex flex-column align-center">
+                <Container orientation="horizontal" lock-axis="x" @drop="onDrop">
+                  <Draggable v-for="item in items" :key="item.id">
+                    <v-chip
+                      label
+                      style="font-size: 2em"
+                      color="purple"
+                      class="py-6 mx-1 draggable-item white--text"
+                      >{{ item.data }}</v-chip
+                    >
+                  </Draggable>
+                </Container>
+              </div>
+              <div>
+                <v-btn color="success" class="my-10 py-4" @click="validateAnswer">
+                  Comprobar
+                </v-btn>
+              </div>
+              <span v-if="wrongAnswer" style="font-size: 2em" class="red--text">
+                Respuesta incorrecta
+              </span>
+              <!-- {{activities}}
+              {{items}} -->
+              <!-- {{content}} -->
+            </v-col>
+            <v-col
+              cols="3"
+              class="elevation-4 scroller"
+              style="overflow: auto; height: 85vh; max-height: 70vh"
+            >
+              <h3 style="text-align: center">ÍNDICE DE ACTIVIDADES</h3>
+              <v-btn
+                v-for="(act, i) in content.content"
+                :key="`content${i}`"
+                text
+                class="my-1"
+                @click="switchActivity(i)"
+                ><v-icon v-if="activities[i].done">mdi-checkbox-marked-circle</v-icon
+                >{{ act.title }}</v-btn
               >
-            </Draggable>
-          </Container>
-        </div>
-        <div>
-          <v-btn color="success" class="my-10 py-4" @click="validateAnswer">
-            Comprobar
-          </v-btn>
-        </div>
-        <span v-if="wrongAnswer" style="font-size: 2em" class="red--text">
-          Respuesta incorrecta
-        </span>
-        <!-- {{activities}}
-        {{items}} -->
-        <!-- {{content}} -->
-      </v-col>
-      <v-col
-        cols="3"
-        class="elevation-4 scroller"
-        style="overflow: scroll; height: 85vh"
-      >
-        <h3 style="text-align: center">ÍNDICE DE ACTIVIDADES</h3>
-        <v-btn
-          v-for="(act, i) in content.content"
-          :key="`content${i}`"
-          text
-          class="my-1"
-          @click="switchActivity(i)"
-          ><v-icon v-if="activities[i].done">mdi-checkbox-marked-circle</v-icon
-          >{{ act.title }}</v-btn
-        >
-        <!-- <v-btn v-for="(act, i) in 20" :key="`overflow${i}`" text plain>
-          TESTING OVERFLOW Nº{{ i }}
-        </v-btn> -->
-      </v-col>
+            </v-col>  
+
+          <!-- <v-btn v-for="(act, i) in 20" :key="`overflow${i}`" text plain>
+            TESTING OVERFLOW Nº{{ i }}
+          </v-btn> -->
+        </v-row>
+      </v-container>
+    </v-card>
+      <!-- {{content}} -->
       <!-- <v-col class="pa-10" cols="1">
         <v-tooltip bottom>
           <template v-slot:activator="{ on, attrs }">
@@ -87,50 +100,6 @@
           </v-btn>
         </v-btn-toggle>
       </v-col> -->
-    </v-row>
-    <v-navigation-drawer v-model="drawer" absolute bottom temporary>
-      <v-stepper v-model="e6" vertical>
-        <v-stepper-step :complete="e6 > 1" step="1">
-          Select an app
-          <small>Summarize if needed</small>
-        </v-stepper-step>
-
-        <v-stepper-content step="1">
-          <v-card color="grey lighten-1" class="mb-12" height="200px"></v-card>
-          <v-btn color="primary" @click="e6 = 2"> Continue </v-btn>
-          <v-btn text> Cancel </v-btn>
-        </v-stepper-content>
-
-        <v-stepper-step :complete="e6 > 2" step="2">
-          Configure analytics for this app
-        </v-stepper-step>
-
-        <v-stepper-content step="2">
-          <v-card color="grey lighten-1" class="mb-12" height="200px"></v-card>
-          <v-btn color="primary" @click="e6 = 3"> Continue </v-btn>
-          <v-btn text> Cancel </v-btn>
-        </v-stepper-content>
-
-        <v-stepper-step :complete="e6 > 3" step="3">
-          Select an ad format and name ad unit
-        </v-stepper-step>
-
-        <v-stepper-content step="3">
-          <v-card color="grey lighten-1" class="mb-12" height="200px"></v-card>
-          <v-btn color="primary" @click="e6 = 4"> Continue </v-btn>
-          <v-btn text> Cancel </v-btn>
-        </v-stepper-content>
-
-        <v-stepper-step step="4"> View setup instructions </v-stepper-step>
-        <v-stepper-content step="4">
-          <v-card color="grey lighten-1" class="mb-12" height="200px"></v-card>
-          <v-btn color="primary" @click="e6 = 1"> Continue </v-btn>
-          <v-btn text> Cancel </v-btn>
-        </v-stepper-content>
-      </v-stepper>
-    </v-navigation-drawer>
-    <!-- {{content}} -->
-  </v-container>
 </template>
 
 <script>
@@ -148,8 +117,7 @@ export default {
     group: null,
     e6: 1,
     currActIdx: 0,
-    items: [],
-    split: ['Paca', 'la', 'alpaca', 'es', 'muy', 'flaca'],
+    items: [],    
     wrongAnswer: false,
   }),
   watch: {
