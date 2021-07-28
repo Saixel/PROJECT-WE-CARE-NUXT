@@ -1,6 +1,6 @@
 import { Container } from 'vue-smooth-dnd';
 <template>
-  <v-container>
+  <v-container class="mt-6" >
     <!-- <v-row>
       <v-col>
         <div
@@ -15,71 +15,85 @@ import { Container } from 'vue-smooth-dnd';
         </div>
       </v-col>
     </v-row> -->
-
-    <v-row v-if="!$auth.loggedIn" class="mb-5">
+    <!-- <h1 class="text-center mb-5 title-style">WE CARE</h1> -->
+    <v-row v-if="!$auth.loggedIn" class="mb-5 " style="text-align: center" >
       <v-col sm="12" md="5">
         <div class="circle-right"></div>
-        <v-card height="400" class="elevation-12">
+        <v-card
+          height="400"
+          class="elevation-0"
+          style="background-color: transparent"
+        >
           <v-row>
-            <v-col>
-              <v-card-title class="pt-12">
-                <span>WE</span>
-              </v-card-title>
-              <v-card-title class="mt-16 pb-12">
-                <span>CARE</span>
+            <v-col cols="8">
+              <v-card-title class="ml-n6">
+                <span
+                  style="
+                    color: black;
+                    text-shadow: 3px 2px 4px white;
+                    -webkit-text-stroke: 1px white;
+                  "
+                  >WE CARE</span
+                >
               </v-card-title>
             </v-col>
-            <v-col>
-              <v-card-subtitle>
-                <div>
-                  <p>
-                    Somos una empresa dedicada a pensar y cuidar de los demás
-                    facilitando de manera sencilla herramientas con las que
-                    poder aprender, fortalecer nuestras mentes y sobretodo
-                    pasarlo bien.
-                    <br />
-                  </p>
-                  <p>Nos distinguimos del resto por ser:</p>
-                  <ul>
-                    <li>Los putos amos</li>
-                    <li>Los putos amos</li>
-                    <li>Los putos amos</li>
-                    <li>Los putos amos</li>
-                  </ul>
+
+            <v-card-subtitle>
+              <div>
+                <p>
+                  Somos una empresa dedicada a pensar y cuidar de los demás
+                  facilitando de manera sencilla herramientas con las que poder
+                  aprender, fortalecer nuestras mentes y sobretodo pasarlo bien.
+                  <br />
+                  <br />
+                  Neib olrasap odoterbos y setnem sartseun recelatrof ,rednerpa
+                  redop euq sal noc satneimarreh allicnes arenam ed odnatilicaf
+                  sámed sol ed radiuc y rasnep a adacided aserpme anu somos.
+                </p>
+                <br>
+                <div >
+                <h2 class="text-decoration-underline">
+                  Nos distinguimos del resto por ser:
+                </h2>
+                <ul class="pa-0 my-3 mx-4">
+                  <li style="list-style-image: url('')"><h3>Interfaz intuitiva</h3></li>
+                  <li><h3>Los putos amos</h3></li>
+                  <li><h3>putos amos</h3></li>
+                  <li><h3>Los putos amos</h3></li>
+                </ul>
                 </div>
-              </v-card-subtitle>
-            </v-col>
+              </div>
+            </v-card-subtitle>
           </v-row>
         </v-card>
       </v-col>
       <v-col sm="12" md="7">
         <v-card class="elevation-12">
           <!-- <v-window> -->
-            <!-- <v-window-item> -->
-              <LoginHome />
-            <!-- </v-window-item> -->
+          <!-- <v-window-item> -->
+          <LoginHome />
+          <!-- </v-window-item> -->
           <!-- </v-window> -->
         </v-card>
       </v-col>
     </v-row>
 
     <v-container v-if="contents">
-      <h1 class="text-center mb-5">CONTENIDOS DESTACADOS</h1>
+      <h1 class="text-center mb-5 title-style">CONTENIDOS DESTACADOS</h1>
       <CarouselContent :contents="contents" />
     </v-container>
 
     <v-container v-if="professionals">
-      <h1 class="text-center mb-5">EDUCADORES DESTACADOS</h1>
-    <CarouselProfessional :professionals="professionals" />
+      <h1 class="text-center mb-5 title-style">EDUCADORES DESTACADOS</h1>
+      <CarouselProfessional :professionals="professionals" />
     </v-container>
 
-    <h1 class="text-center mt-5 mb-5">MIS CONTENIDOS</h1>
+    <h1 class="text-center mt-5 mb-5 title-style">MIS CONTENIDOS</h1>
     <v-row v-if="contents">
       <v-col
         v-for="(content, idx) in contents"
         :key="idx"
-        xs="12"
-        sm="12"
+        cols="12"
         md="6"
         lg="4"
         xl="3"
@@ -99,13 +113,13 @@ export default {
       contents,
       professionals,
     }
-  }
+  },
 }
 </script>
 
 <style scoped>
 span {
-  font-size: 152px;
+  font-size: 100px;
 }
 .Container {
   background-color: grey;
@@ -123,7 +137,8 @@ span {
   width: 100%;
   height: 100%;
   background-color: #406585;
-  clip-path: circle(400px at right 100px);
+  clip-path: circle(400px at right 150px);
+  
 }
 .circle-center {
   position: absolute;
@@ -136,5 +151,13 @@ span {
 }
 p {
   font-size: 20px;
+}
+.title-style {
+  color: white;
+  text-shadow: 3px 2px 4px black;
+  -webkit-text-stroke: 1px black;
+}
+li {
+  margin-top: 5px;
 }
 </style>

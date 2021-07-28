@@ -4,10 +4,10 @@
       <SearchAside />
     </v-col> -->
     <v-col>
-    <h1 class="text-center mb-5">CONTENIDOS DESTACADOS</h1>
+    <h1 class="text-center mb-5 title-style">CONTENIDOS DESTACADOS</h1>
     <CarouselContent :contents="topContents" />
     </v-col>
-    <h1 class="text-center mt-10 mb-5">
+    <h1 class="text-center mt-10 mb-5 title-style">
       {{ contents.length }} PAQUETES DE EJERCICIOS DISPONIBLES
     </h1>
     <v-row>
@@ -38,3 +38,10 @@ export default {
   },
 }
 </script>
+<style scoped>
+.title-style {
+  color: white;
+  text-shadow: 3px 2px 4px black;
+  -webkit-text-stroke: 1px black;
+}
+</style>
