@@ -12,7 +12,7 @@
               </v-col>
 
               <v-col class="px-5 py-8 text-start ml-7">
-                <h1>Alexis Guanche</h1>
+                <h1>Nombre de usuario</h1>
               </v-col>
             </v-row>
           </v-container>

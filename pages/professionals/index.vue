@@ -5,7 +5,7 @@
     <h1 class="text-center mt-10 mb-5 title-style">TODOS LOS PROFESIONALES</h1>
     <v-row>
       <v-col
-        v-for="(professional, idx) in professionals"
+        v-for="(professional, idx) in topProfessionals"
         :key="idx"
         xs="12"
         md="6"
@@ -26,7 +26,12 @@ export default {
     return {
       professionals,
     }
-  }
+  },
+  computed: {
+    topProfessionals() {
+      return this.professionals.slice(0).sort((a, b) => b.score - a.score)
+    },
+  },
 }
 </script>
 <style scoped>

@@ -17,12 +17,12 @@ import { Container } from 'vue-smooth-dnd';
     <v-container v-if="$auth.loggedIn">
       <v-container v-if="contents">
         <h1 class="text-center mb-5 title-style">CONTENIDOS DESTACADOS</h1>
-        <CarouselContent :contents="contents" />
+        <CarouselContent :contents="topContents" />
       </v-container>
 
       <v-container v-if="professionals">
         <h1 class="text-center mb-5 title-style">PROFESIONALES DESTACADOS</h1>
-        <CarouselProfessional :professionals="professionals" />
+        <CarouselProfessional :professionals="topProfessionals" />
       </v-container>
 
       <h1 class="text-center mt-5 mb-5 title-style">MIS CONTENIDOS</h1>
@@ -51,6 +51,14 @@ export default {
       contents,
       professionals,
     }
+  },
+  computed: {
+    topContents() {
+      return this.contents.slice(0).sort((a, b) => b.score - a.score)
+    },
+    topProfessionals() {
+      return this.professionals.slice(0).sort((a, b) => b.score - a.score)
+    },
   },
 }
 </script>
