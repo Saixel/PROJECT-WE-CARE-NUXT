@@ -1,9 +1,9 @@
 import { Container } from 'vue-smooth-dnd';
 <template>
-  <v-container class="mt-10" fill-height fluid>
+  <v-container fill-height fluid>
     <!-- <h1 class="text-center mb-5 title-style">WE CARE</h1> -->
-    <v-row v-if="!$auth.loggedIn" class="mb-5" style="text-align: center" align="center" justify="center">
-      <v-col cols="10" md="12">
+    <v-row v-if="!$auth.loggedIn" class="mb-5 mt-10" style="text-align: center" align="center" justify="center">
+      <v-col cols="10" md="12" xl="8">
         <v-card class="elevation-12">
           <!-- <v-window> -->
           <!-- <v-window-item> -->
@@ -15,14 +15,14 @@ import { Container } from 'vue-smooth-dnd';
     </v-row>
 
     <v-container v-if="$auth.loggedIn">
-      <v-container v-if="contents">
-        <h1 class="text-center mb-5 title-style">CONTENIDOS DESTACADOS</h1>
-        <CarouselContent :contents="topContents" />
-      </v-container>
-
       <v-container v-if="professionals">
         <h1 class="text-center mb-5 title-style">PROFESIONALES DESTACADOS</h1>
         <CarouselProfessional :professionals="topProfessionals" />
+      </v-container>
+
+      <v-container v-if="contents">
+        <h1 class="text-center mb-5 title-style">CONTENIDOS DESTACADOS</h1>
+        <CarouselContent :contents="topContents" />
       </v-container>
 
       <h1 class="text-center mt-5 mb-5 title-style">MIS CONTENIDOS</h1>

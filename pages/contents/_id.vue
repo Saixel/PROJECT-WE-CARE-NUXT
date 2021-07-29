@@ -160,10 +160,6 @@ export default {
             product: this.content,
             email: token.email,
           }
-          console.log('Token ---->', token)
-          console.log('Content ---->', this.content)
-          // console.log('THIS ---->', this)
-          // const loadingComponent = this.$loading.open()
 
           this.$axios
             .$post('/payments', payload)

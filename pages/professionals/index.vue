@@ -1,11 +1,11 @@
 <template>
   <v-container v-if="professionals">
     <h1 class="text-center mb-5 title-style">PROFESIONALES DESTACADOS</h1>
-    <CarouselProfessional :professionals="professionals" />
+    <CarouselProfessional :professionals="topProfessionals" />
     <h1 class="text-center mt-10 mb-5 title-style">TODOS LOS PROFESIONALES</h1>
     <v-row>
       <v-col
-        v-for="(professional, idx) in topProfessionals"
+        v-for="(professional, idx) in professionals"
         :key="idx"
         xs="12"
         md="6"

@@ -25,7 +25,10 @@
           </v-list-item-content>
 
           <v-list-item-avatar tile size="80" class="mt-n6">
-            <v-img src="/profile1.png"></v-img>
+            <v-avatar size="80">
+            <v-img v-if="professional.image" :src="professional.image"></v-img>
+            <v-img v-else src="/profile1.png"></v-img>
+          </v-avatar>
           </v-list-item-avatar>
         </v-list-item>
       </div>

@@ -72,8 +72,8 @@
               >mdi-checkbox-marked-circle</v-icon
             >{{ act.title }}</v-btn
           >
-          <v-btn v-for="(act, i) in 20" :key="`overflow${i}`" text plain>
-            TESTING OVERFLOW Nº{{ i }}
+          <v-btn v-for="(act, i) in 12" :key="`overflow${i}`" text plain>
+            Escoge la definición
           </v-btn>
         </v-col>
       </v-row>
@@ -119,7 +119,6 @@ export default {
   async asyncData({ $axios, params }) {
     const content = await $axios.$get(`/content/${params.id}`)
     const activities = await $axios.$get(`/content/${params.id}/activities`)
-    console.log(content)
     return { content, activities }
   },
   data: () => ({
@@ -199,7 +198,6 @@ export default {
       return result
     },
     generateItems(count, creator) {
-      console.log('-----------------------------------', creator(0))
       const result = []
       for (let i = 0; i < count; i++) {
         result.push(creator(i))

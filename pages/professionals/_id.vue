@@ -5,54 +5,26 @@
         <v-sheet rounded="md" class="pa-13 elevation-4">
           <div class="d-flex justify-center">
             <v-avatar size="150">
-              <img
-                src="/alexprofile1.jpg"
-                :alt="`Foto de ${professional.name}`"
-              />
+              <v-img
+                v-if="professional.image"
+                :src="professional.image"
+              ></v-img>
+              <v-img v-else src="/profile1.png"></v-img>
             </v-avatar>
           </div>
           <div style="text-align: center">
             <h1>{{ professional.name }}</h1>
-            <h4 class="grey--text">{{ professional.description }}</h4>
-            <div v-if="collective">
-              <span>Especializado/a en:</span>
-              <div
-                :class="$vuetify.breakpoint.mobile ? '' : 'scroller'"
-                style="overflow: auto; white-space: nowrap"
-              >
-                <v-chip
-                  v-for="(collective, i) in collectives"
-                  :key="i"
-                  class="me-2 mb-1"
-                  >{{ collective }}</v-chip
-                >
-              </div>
-            </div>
+
           </div>
           <hr class="my-10" />
-          <h3>About me</h3>
+          <h3>Descripción profesional</h3>
           <br />
           <div
             :style="`height: ${
               expand ? 'auto' : '10vh'
             }; overflow: hidden; text-overflow: 'ellipsis'`"
           >
-            <span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum
-            </span>
+            <span>{{ professional.description }}</span>
           </div>
           <span
             class="text-decoration-underline grey--text text--darken-1"
@@ -127,13 +99,6 @@ export default {
   data() {
     return {
       expand: false,
-      collectives: [
-        'TEST COLLECTIVE 1',
-        'TEST COLLECTIVE 2',
-        'TEST COLLECTIVE 3',
-        'TEST COLLECTIVE 4',
-        'TEST COLLECTIVE 5',
-      ],
     }
   },
 }

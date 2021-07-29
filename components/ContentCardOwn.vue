@@ -58,7 +58,11 @@
 
           <v-list-item-avatar tile size="80">
             <v-avatar size="80">
-              <v-img src="/profile1.png"></v-img>
+              <v-img
+                v-if="content.author.image"
+                :src="content.author.image"
+              ></v-img>
+              <v-img v-else src="/profile1.png"></v-img>
             </v-avatar>
           </v-list-item-avatar>
         </v-list-item>
@@ -68,13 +72,13 @@
           <div class="limit-line-4">{{ content.author.description }}</div>
         </v-card-text>
 
-        <v-card-actions class="my-7">
+        <v-card-actions>
           <v-row>
             <v-col>
               <v-btn text color="primary darken-1" @click="reveal = false">
                 Cerrar
               </v-btn>
-              <v-btn text color="primary darken-4"> Ir al profesional </v-btn>
+              <!-- <v-btn text color="primary darken-4"> Ir al profesional </v-btn> -->
             </v-col>
           </v-row>
         </v-card-actions>
@@ -140,14 +144,14 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 4; /* number of lines to show */
+  -webkit-line-clamp: 3; /* number of lines to show */
   -webkit-box-orient: vertical;
 }
 .limit-text {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: 270px;
+  max-width: 250px;
 }
 
 .letter-size::first-letter {
