@@ -119,6 +119,7 @@ export default {
   async asyncData({ $axios, params }) {
     const content = await $axios.$get(`/content/${params.id}`)
     const activities = await $axios.$get(`/content/${params.id}/activities`)
+    console.log(content)
     return { content, activities }
   },
   data: () => ({
@@ -129,6 +130,13 @@ export default {
     items: [],
     wrongAnswer: false,
   }),
+  computed: {
+    isMatch() {
+      return this.activities[this.currActIdx].activity.phrase
+        .split(' ')
+        .every((word, i) => word === this.items[i].data)
+    }
+  },
   watch: {
     group() {
       this.drawer = false
@@ -155,21 +163,12 @@ export default {
       )
     },
     validateAnswer() {
-      let match = true
-      this.activities[this.currActIdx].activity.phrase
-        .split(' ')
-        .forEach((word, i) => {
-          if (word !== this.items[i].data) {
-            this.wrongAnswer = true
-            match = false
-          }
-        })
-      if (match) {
-        this.wrongAnswer = false
+      if (this.isMatch) {
+
         this.activities[this.currActIdx].done = true
-        if (this.currActIdx < this.content.content.length - 1) {
-          this.currActIdx++
-        }
+
+        if (this.currActIdx < this.content.content.length - 1) this.currActIdx++
+
         this.items = this.generateItems(
           this.activities[this.currActIdx].pieces.length,
           (i) => ({
@@ -200,6 +199,7 @@ export default {
       return result
     },
     generateItems(count, creator) {
+      console.log('-----------------------------------', creator(0))
       const result = []
       for (let i = 0; i < count; i++) {
         result.push(creator(i))
