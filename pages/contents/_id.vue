@@ -152,7 +152,7 @@ export default {
       this.stripeHandler = StripeCheckout.configure({
         key: 'pk_test_51JH9VBFDfuZMZbN5N18c6apN1pJn3MwHMENn3iSA0TuNtH3N3mbcKXvkf9yjXzPW1RAMtSltwFF3BqGJ4k8uOIU700LRXEkMea',
         image:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png',
+          'https://img1.freepng.es/20180511/oxq/kisspng-health-care-pollen-flores-computer-icons-5af641441a5b33.322856591526088004108.jpg',
         locale: 'es',
         token: (token) => {
           const payload = {
@@ -175,7 +175,7 @@ export default {
     initPayment() {
       this.stripeHandler.open({
         name: 'We Care',
-        description: 'Prueba de pago',
+        description: 'Pago con tarjeta',
         currency: 'eur',
         zipCode: true,
         billingAddress: true,
